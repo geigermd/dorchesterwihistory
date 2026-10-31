@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dorchester, Wisconsin</title>
+<meta name="description" content="An illustrated history of Dorchester, Wisconsin, from the 1873 railroad to today.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a rail line runs down the page; each era is a station stop on it, with photos set like prints in an album. */
+:root{
+  --paper:#f2f3ee; --ink:#1d2420; --muted:#5c665f; --rule:#cfd4cb;
+  --spruce:#264a3c; --signal:#a8322a; --card:#fbfbf8; --shade:rgba(29,36,32,.08);
+  --display:"Zilla Slab", Rockwell, "Courier New", serif;
+  --body:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#141a17; --ink:#e4e8e2; --muted:#9aa59d; --rule:#2f3a34;
+  --spruce:#86b8a2; --signal:#e07a6e; --card:#1b231f; --shade:rgba(0,0,0,.35); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#141a17; --ink:#e4e8e2; --muted:#9aa59d; --rule:#2f3a34;
+  --spruce:#86b8a2; --signal:#e07a6e; --card:#1b231f; --shade:rgba(0,0,0,.35); color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.6;margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);line-height:1.1;text-wrap:balance;margin:0}
+a{color:var(--spruce)}
+:focus-visible{outline:3px solid var(--signal);outline-offset:3px}
+
+/* Hero */
+.hero{padding-block:56px 40px;border-bottom:2px solid var(--ink)}
+.eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--signal)}
+.hero h1{font-size:clamp(46px,9vw,104px);font-weight:700;letter-spacing:-.01em;margin-top:10px}
+.hero h1 span{display:block;font-size:.42em;font-weight:500;color:var(--muted);letter-spacing:.02em;margin-top:6px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px;margin-top:32px;align-items:start}
+.lede{font-size:21px;max-width:34em}
+.lede p{margin:0 0 14px}
+.timetable{border:2px solid var(--ink);background:var(--card);font-family:var(--mono);font-size:13.5px;line-height:1.5}
+.timetable header{background:var(--ink);color:var(--paper);padding:8px 12px;letter-spacing:.08em;text-transform:uppercase;font-size:12px}
+.timetable table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.timetable td{padding:7px 12px;border-top:1px dashed var(--rule)}
+.timetable td:last-child{text-align:right;white-space:nowrap}
+.timetable tr.here td{color:var(--signal);font-weight:500}
+.timetable footer{padding:8px 12px;border-top:1px solid var(--rule);color:var(--muted);font-size:12px}
+.hero-photo{margin:36px 0 0}
+
+/* Figures */
+figure{margin:0}
+figure button{all:unset;cursor:zoom-in;display:block;width:100%}
+figure button:focus-visible{outline:3px solid var(--signal);outline-offset:3px}
+figure img{display:block;width:100%;height:auto;max-width:100%;background:var(--rule);box-shadow:0 1px 0 var(--shade),0 8px 24px -12px var(--shade)}
+figcaption{font-family:var(--mono);font-size:12.5px;line-height:1.45;color:var(--muted);margin-top:8px}
+figcaption b{color:var(--ink);font-weight:500}
+
+/* Contents strip */
+.stops{display:flex;flex-wrap:wrap;gap:6px 18px;padding-block:18px;border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:13px}
+.stops a{text-decoration:none;color:var(--muted)}
+.stops a:hover{color:var(--signal)}
+.stops b{color:var(--ink);font-weight:500;margin-right:4px}
+
+/* The line */
+.line{position:relative;padding-block:24px 40px}
+.line::before{content:"";position:absolute;top:0;bottom:0;left:calc(max(16px,env(safe-area-inset-left,0px)) + 9px);width:4px;
+  background:repeating-linear-gradient(to bottom,var(--ink) 0 2px,transparent 2px 14px),linear-gradient(var(--ink),var(--ink));
+  background-size:12px 100%,2px 100%;background-position:-4px 0,1px 0;background-repeat:repeat-y,no-repeat;opacity:.35}
+.era{position:relative;padding-left:48px;padding-block:36px}
+.era::before{content:"";position:absolute;left:2px;top:46px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--signal)}
+.era .years{font-family:var(--mono);font-size:13px;letter-spacing:.1em;color:var(--signal)}
+.era h2{font-size:clamp(30px,4.6vw,44px);margin-top:4px}
+.era .text{max-width:38em;margin-top:14px}
+.era .text p{margin:0 0 14px}
+.facts{list-style:none;padding:0;margin:6px 0 14px;display:grid;gap:6px}
+.facts li{display:grid;grid-template-columns:7.5em minmax(0,1fr);gap:12px;border-top:1px dashed var(--rule);padding-top:6px}
+.facts time{font-family:var(--mono);font-size:13.5px;color:var(--spruce);font-variant-numeric:tabular-nums;padding-top:2px}
+.gallery{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:22px;margin-top:22px}
+.w12{grid-column:span 12}.w8{grid-column:span 8}.w7{grid-column:span 7}.w6{grid-column:span 6}.w5{grid-column:span 5}.w4{grid-column:span 4}
+.quote{border-left:3px solid var(--spruce);padding:2px 0 2px 16px;margin:18px 0;font-style:italic;color:var(--muted)}
+
+/* Notes */
+.notes{border-top:2px solid var(--ink);padding-block:36px 64px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;font-size:16px}
+.notes h3{font-size:22px;margin-bottom:8px}
+.notes p,.notes ul{margin:0 0 10px;color:var(--muted)}
+.notes ul{padding-left:18px}
+
+/* Lightbox */
+.lb{position:fixed;inset:0;z-index:20;background:rgba(10,14,12,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  padding:calc(24px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lb img{max-width:100%;max-height:78vh;object-fit:contain}
+.lb p{font-family:var(--mono);font-size:13px;color:#e4e8e2;max-width:60em;text-align:center;margin:0}
+.lb button{font-family:var(--mono);font-size:13px;background:none;color:#e4e8e2;border:1px solid #e4e8e2;padding:6px 14px;cursor:pointer}
+
+@media (max-width:760px){
+  body{font-size:17px}
+  .hero-grid,.notes{grid-template-columns:minmax(0,1fr)}
+  .gallery{gap:16px}
+  .w8,.w7,.w6,.w5,.w4{grid-column:span 12}
+  .era{padding-left:36px}
+  .facts li{grid-template-columns:minmax(0,1fr);gap:0}
+}
+@media (prefers-reduced-motion:no-preference){figure img{transition:transform .25s ease}figure button:hover img{transform:translateY(-2px)}}
+</style>
+<style>img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+<header class="wrap hero">
+  <div class="eyebrow">Clark County · Village since 1901</div>
+  <h1>Dorchester, Wisconsin<span>A railroad town and its people, 1873 to today</span></h1>
+  <div class="hero-grid">
+    <div class="lede">
+      <p>Dorchester began as a stop on the Wisconsin Central Railway, cut through the northwoods in the early 1870s and named, like its neighbors, after a town near Boston.</p>
+      <p>Danish, Norwegian, German and Bohemian families followed the rails. They cleared the land, ran sawmills and saloons along Front Street, and built a village that has survived blizzards, fire and school consolidation. This page tells that story through the artifacts at the Dorchester Historical Center and photographs saved by local families.</p>
+    </div>
+    <aside class="timetable" aria-label="First known timetable naming Dorchester">
+      <header>Wis. Central Ry. · Effective Sept. 27, 1874</header>
+      <table>
+        <tr><td>No. 9 · lv. Colby</td><td>4:15 P.M.</td></tr>
+        <tr class="here"><td>ar. Dorchester</td><td>5:00 P.M.</td></tr>
+        <tr><td>No. 10 · lv. Worcester</td><td>6:00 A.M.</td></tr>
+        <tr><td>Medford</td><td>10:25 A.M.</td></tr>
+        <tr class="here"><td>Dorchester</td><td>11:26 A.M.</td></tr>
+        <tr><td>ar. Colby</td><td>12:15 P.M.</td></tr>
+      </table>
+      <footer>The earliest record of the town's name, per a 1970 Soo Line letter. Times as given in the letter.</footer>
+    </aside>
+  </div>
+  <figure class="hero-photo">
+    <button type="button" data-full="img/1889-harvest.jpg" aria-label="Enlarge photo: 1889 Harvest Festival"><img src="img/1889-harvest.jpg" alt="Crowd with a brass band and American flag in front of a large wooden building, 1889" width="1100" height="969"></button>
+    <figcaption><b>The Harvest Festival, German Farmers Aid Society, Sept. 16, 1889.</b> Families, a brass band and the flag in front of a frame hall. Dorchester Historical Center.</figcaption>
+  </figure>
+</header>
+
+<nav class="wrap stops" aria-label="Eras">
+  <a href="#rails"><b>1871</b>The rails</a>
+  <a href="#settlers"><b>1875</b>Homesteads</a>
+  <a href="#lumber"><b>1880s</b>Lumber</a>
+  <a href="#village"><b>1901</b>A village</a>
+  <a href="#front-street"><b>1900s</b>Front Street</a>
+  <a href="#snow-fire"><b>1917</b>Snow &amp; fire</a>
+  <a href="#between-wars"><b>1920s</b>Between the wars</a>
+  <a href="#red-devils"><b>1913</b>Red Devils</a>
+  <a href="#mid-century"><b>1940s</b>Mid-century</a>
+  <a href="#centennial"><b>1973</b>Centennial</a>
+  <a href="#today"><b>1990</b>Recent years</a>
+</nav>
+
+<main class="wrap line">
+
+<section class="era" id="rails">
+  <div class="years">1871 – 1886</div>
+  <h2>The rails come north</h2>
+  <div class="text">
+    <p>The Wisconsin Central broke ground at West Menasha on June 5, 1871, and reached Stevens Point that November. In 1872 the line was finished to a new stop named Colby, after Charles L. Colby of Boston, whose company held the contract to build the road to Ashland.</p>
+    <p>On April 15, 1873, crews began laying rail north from Colby. Stations along the way were named for Massachusetts towns: Medford, Chelsea, Dedham, Walden, Worcester, and Dorchester, then a small community outside Boston. The historical center dates the railroad's arrival in Dorchester to April 18, 1873.</p>
+    <p>The first iron rails twisted out of shape in the northern weather and were replaced with steel in 1886. The first depot was an old Wisconsin Central boxcar set beside the tracks. It burned in 1896.</p>
+  </div>
+  <div class="gallery">
+    <figure class="w5"><button type="button" data-full="img/lydon-letter.jpg" aria-label="Enlarge: 1970 letter"><img src="img/lydon-letter.jpg" alt="Typed letter from James W. Lydon, 1970" loading="lazy"></button>
+      <figcaption><b>Letter from James W. Lydon, 1970.</b> Written to Village President Ted Schwoch, it lays out the railroad's arrival and the origin of the name.</figcaption></figure>
+    <figure class="w7"><button type="button" data-full="img/1882-depot.jpg" aria-label="Enlarge: first depot"><img src="img/1882-depot.jpg" alt="Wisconsin Central boxcar used as a depot" loading="lazy"></button>
+      <figcaption><b>The first depot, 1882.</b> A Wisconsin Central boxcar beside a plank platform. It burned in 1896.</figcaption>
+    <div style="height:22px"></div>
+    <button type="button" data-full="img/rail-hardware.jpg" aria-label="Enlarge: rail hardware"><img src="img/rail-hardware.jpg" alt="Rail spikes, clips and tie plate mounted on a board" loading="lazy"></button>
+      <figcaption><b>Spikes and rail clips</b> believed to be from the 1886 switch to steel track. Dorchester Historical Center.</figcaption></figure>
+  </div>
+</section>
+
+<section class="era" id="settlers">
+  <div class="years">1870s – 1880s</div>
+  <h2>Homesteads and first families</h2>
+  <div class="text">
+    <p>Settlers claimed land on both sides of the tracks in what was then the Town of Mayville. A hand-researched map by Linda (Johnson) Mertens shows each homestead claim from 1870 to 1875. Daniel O. Miltimore (1838–1901) is remembered at the historical center as the "First Citizen of Dorchester."</p>
+    <ul class="facts">
+      <li><time>Aug. 1877</time><span>Andrew Sorenson arrives from Aarhus, Denmark. His father buys "the first parcel of railroad land sold in this vicinity," a mile and a half west of the village. Andrew and his brother go into the meat market business.</span></li>
+      <li><time>c. 1883</time><span>Dr. H. M. Nedry, "one of the first doctors of Dorchester country," begins a practice he keeps until 1910.</span></li>
+      <li><time>1886</time><span>H. LaBossier opens a general store. His hall later hosts the first village election.</span></li>
+      <li><time>1888</time><span>A. F. F. Jensen builds a two-story, 26-by-60-foot general store with a warehouse beside it.</span></li>
+    </ul>
+  </div>
+  <div class="gallery">
+    <figure class="w8"><button type="button" data-full="img/1875-map.jpg" aria-label="Enlarge: 1875 map"><img src="img/1875-map.jpg" alt="Map of Town of Mayville homestead claims, 1875" loading="lazy"></button>
+      <figcaption><b>Town of Mayville and surrounding area, 1875.</b> Homestead claims, researched and drawn by Linda (Johnson) Mertens.</figcaption></figure>
+    <figure class="w4"><button type="button" data-full="img/miltimore.jpg" aria-label="Enlarge: Daniel O. Miltimore"><img src="img/miltimore.jpg" alt="Framed portrait of Daniel O. Miltimore" loading="lazy"></button>
+      <figcaption><b>Daniel O. Miltimore, 1838–1901.</b> "First Citizen of Dorchester."</figcaption></figure>
+    <figure class="w6"><button type="button" data-full="img/1888-mercantile.jpg" aria-label="Enlarge: Jensen store"><img src="img/1888-mercantile.jpg" alt="Engraved drawing of A. F. F. Jensen's general store" loading="lazy"></button>
+      <figcaption><b>General Store of A. F. F. Jensen, 1888.</b> Engraving from a period publication.</figcaption></figure>
+  </div>
+</section>
+
+<section class="era" id="lumber">
+  <div class="years">1880s – 1900s</div>
+  <h2>Lumber, threshing and a German community</h2>
+  <div class="text">
+    <p>The forest paid the bills. The best timber stood close to the rail line, so horse teams could haul logs cheaply to the mills and the cars. A stencil reading "Van Dusen &amp; Co., Shaded A, Dorchester, Wis." marked the town's lumber, and shaving benches like the 1883 <i>schnitzelbank</i> at the historical center turned out roof shingles and ax handles. Paulson's sawmill appears in photos from 1905 to 1912.</p>
+    <p>Many newcomers were German-speaking. A trunk at the historical center is addressed by hand to Johann Jantsch in "Nord Amerika." In September 1889 the German Farmers Aid Society held a harvest festival with a full brass band. By 1898 <i>The New Era</i> carried ads for the Dorchester Roller Mills and its "Monogram Flour."</p>
+  </div>
+  <div class="gallery">
+    <figure class="w7"><button type="button" data-full="img/1905-paulson-sawmill.jpg" aria-label="Enlarge: Paulson's sawmill"><img src="img/1905-paulson-sawmill.jpg" alt="Sawmill yard with log piles and horse teams" loading="lazy"></button>
+      <figcaption><b>Paulson's sawmill, 1905.</b> Men on the shed roof, log piles and horse teams in the yard, and a church steeple behind.</figcaption></figure>
+    <figure class="w5"><button type="button" data-full="img/1898-logs-kids.jpg" aria-label="Enlarge: children on logs"><img src="img/1898-logs-kids.jpg" alt="Children sitting in a huge stack of logs" loading="lazy"></button>
+      <figcaption><b>Kids playing in the logs, 1898.</b></figcaption></figure>
+    <figure class="w6"><button type="button" data-full="img/1909-unloading-logs.jpg" aria-label="Enlarge: unloading logs"><img src="img/1909-unloading-logs.jpg" alt="Men unloading logs from a railroad flatcar in snow" loading="lazy"></button>
+      <figcaption><b>Unloading logs from a railroad car, 1909.</b></figcaption></figure>
+    <figure class="w6"><button type="button" data-full="img/vandusen-stencil.jpg" aria-label="Enlarge: Van Dusen stencil"><img src="img/vandusen-stencil.jpg" alt="Metal stencil reading Van Dusen and Co, Shaded A, Dorchester Wis" loading="lazy"></button>
+      <figcaption><b>Van Dusen &amp; Co. stencil, about 1890.</b> Dorchester Historical Center.</figcaption></figure>
+    <figure class="w12"><button type="button" data-full="img/1900-threshing.jpg" aria-label="Enlarge: threshing"><img src="img/1900-threshing.jpg" alt="Steam engine powering a threshing machine beside a barn" loading="lazy"></button>
+      <figcaption><b>Threshing, about 1900.</b> A steam traction engine drives the separator, with a horse-drawn water wagon alongside.</figcaption></figure>
+  </div>
+</section>
+
+<section class="era" id="village">
+  <div class="years">1901</div>
+  <h2>Dorchester becomes a village</h2>
+  <div class="text">
+    <p>On September 28, 1901, the Clark County Circuit Court ordered the village incorporated, and voters approved it on October 22. The election inspectors then set the first village election for November 12, 1901, from ten in the morning to four in the afternoon at LaBossier's Hall.</p>
+    <p class="quote">"…a President, six trustees, a clerk, a treasurer, a supervisor, an assessor, a constable and two justices of the Peace."</p>
+    <p>Andrew Sorenson served as the village's first treasurer, and later as street commissioner and constable for twenty years.</p>
+  </div>
+  <div class="gallery">
+    <figure class="w5"><button type="button" data-full="img/1901-election.jpg" aria-label="Enlarge: election notice"><img src="img/1901-election.jpg" alt="Handwritten 1901 election notice" loading="lazy"></button>
+      <figcaption><b>Election notice, Oct. 23, 1901.</b> Signed by the three inspectors. Dorchester Historical Center.</figcaption></figure>
+    <figure class="w7"><button type="button" data-full="img/1898-new-era.jpg" aria-label="Enlarge: The New Era newspaper"><img src="img/1898-new-era.jpg" alt="Fragile 1898 front page of The New Era" loading="lazy"></button>
+      <figcaption><b><i>The New Era</i>, 1898.</b> Ads for the Dorchester Roller Mills, H. LaBossier's general merchandise and furniture, and other local stores.</figcaption></figure>
+  </div>
+</section>
+
+<section class="era" id="front-street">
+  <div class="years">1900s – 1910s</div>
+  <h2>Front Street years</h2>
+  <div class="text">
+    <p>Front Street ran along the tracks, unpaved and lined with saloons, stores and hotels: Kronschnabl's and Fred Marten's saloons, the "Jerk Water Saloon and Dance Hall," the Dorchester House, August Miller's hotel, Esser's Hall and an Opera House. The Dorchester State Bank opened in 1909 and the Co-op store by 1912. Congregations built Salem Church, the "Little White Church" and St. Peter's Lutheran.</p>
+    <p>The high school held its 1913 commencement at the Opera House for a class of seven. A three-story brick high school stood by 1916.</p>
+  </div>
+  <div class="gallery">
+    <figure class="w12"><button type="button" data-full="img/1904-front-street.jpg" aria-label="Enlarge: Front Street 1904"><img src="img/1904-front-street.jpg" alt="Unpaved Front Street with storefronts and horse buggies, 1904" loading="lazy"></button>
+      <figcaption><b>Front Street looking south, 1904.</b> The Dorchester House sign, a saloon awning, and buggies along the storefronts.</figcaption></figure>
+    <figure class="w7"><button type="button" data-full="img/1912-front-street.jpg" aria-label="Enlarge: Front Street 1912"><img src="img/1912-front-street.jpg" alt="Front Street looking north with brick storefronts" loading="lazy"></button>
+      <figcaption><b>Front Street looking north, about 1912–13.</b></figcaption></figure>
+    <figure class="w5"><button type="button" data-full="img/1909-bank.jpg" aria-label="Enlarge: Dorchester State Bank"><img src="img/1909-bank.jpg" alt="Small brick bank with striped awnings" loading="lazy"></button>
+      <figcaption><b>Dorchester State Bank, 1909.</b></figcaption></figure>
+    <figure class="w6"><button type="button" data-full="img/1912-st-peters.jpg" aria-label="Enlarge: St. Peter's"><img src="img/1912-st-peters.jpg" alt="Brick Lutheran church with steeple and parsonage" loading="lazy"></button>
+      <figcaption><b>St. Peter's Lutheran Church and parsonage, 1912.</b></figcaption></figure>
+    <figure class="w6"><button type="button" data-full="img/1914-miller-hotel.jpg" aria-label="Enlarge: Miller Hotel kitchen"><img src="img/1914-miller-hotel.jpg" alt="Two women in a hotel kitchen with a wood stove" loading="lazy"></button>
+      <figcaption><b>The kitchen at August Miller's hotel, 1914.</b> The women are unidentified.</figcaption></figure>
+    <figure class="w6"><button type="button" data-full="img/1910-depot.jpg" aria-label="Enlarge: old depot"><img src="img/1910-depot.jpg" alt="Four men with shovels in front of the depot" loading="lazy"></button>
+      <figcaption><b>The old depot, about 1910.</b> Henry Malchow, Joe Weber, Rudy Ulrich and Frank Weber.</figcaption></figure>
+    <figure class="w6"><button type="button" data-full="img/1916-high-school.jpg" aria-label="Enlarge: high school"><img src="img/1916-high-school.jpg" alt="Three-story brick high school" loading="lazy"></button>
+      <figcaption><b>Dorchester High School, 1916.</b></figcaption></figure>
+  </div>
+</section>
+
+<section class="era" id="snow-fire">
+  <div class="years">1917 – 1923</div>
+  <h2>The big snow and the big fire</h2>
+  <div class="text">
+    <p>On March 18, 1917, a blizzard buried a Soo Line locomotive at Dorchester. A crew of men and boys dug out the cut by hand. One photographer captioned it "The boys on the Soo Line, not in the trenches," a nod to the war overseas.</p>
+    <p>Six years later came what the paper called "the most serious fire since 1895." It started around midnight in Sauter's bowling alley and spread through about fifteen buildings. Dorchester's own fire engine broke its drive shaft, and Abbotsford and Medford sent chemical engines. Paulson's Garage, the Kronschnabl post office, Homsted's drugstore, the Fuchsgruber and Holz Bros. stores and the Bauernfeind home were lost, about $150,000 in damage. Several owners rebuilt.</p>
+  </div>
+  <div class="gallery">
+    <figure class="w6"><button type="button" data-full="img/1917-snow-train.jpg" aria-label="Enlarge: train in snow"><img src="img/1917-snow-train.jpg" alt="Steam locomotive buried in deep snow" loading="lazy"></button>
+      <figcaption><b>"Snow bound scene at Dorchester, Wis.," March 18, 1917.</b></figcaption></figure>
+    <figure class="w6"><button type="button" data-full="img/1917-clearing-track.jpg" aria-label="Enlarge: clearing the track"><img src="img/1917-clearing-track.jpg" alt="Large crew shoveling snow from the railroad cut" loading="lazy"></button>
+      <figcaption><b>Clearing the track, March 1917.</b></figcaption></figure>
+    <figure class="w12"><button type="button" data-full="img/1923-after-fire.jpg" aria-label="Enlarge: after the 1923 fire"><img src="img/1923-after-fire.jpg" alt="Burned rubble and a standing chimney on Front Street" loading="lazy"></button>
+      <figcaption><b>The day after the 1923 fire,</b> looking north up south Front Street.</figcaption></figure>
+  </div>
+</section>
+
+<section class="era" id="between-wars">
+  <div class="years">1920s – 1930s</div>
+  <h2>Between the wars</h2>
+  <div class="text">
+    <ul class="facts">
+      <li><time>1916–1925</time><span>Herman Kronschnabl serves as postmaster and publishes the <i>Dorchester Clarion</i>, the weekly paper the town kept for decades.</span></li>
+      <li><time>1919–1937</time><span>The Tri-City Band of Abbotsford, Colby and Dorchester plays, including three years as the Clark County Fair band.</span></li>
+      <li><time>1920</time><span>Electricity comes to Dorchester. Families retire their oil lamps.</span></li>
+      <li><time>1929</time><span>The Central Canning Co. runs a factory in town. Pea canning continues into the late 1930s.</span></li>
+      <li><time>1935</time><span>Banded sandstone from the local quarry builds the Seidel Bros. D-X service station, which also served malts and fast food.</span></li>
+      <li><time>1937</time><span>The first Dorchester Days. Weekly Wednesday-night cash drawings were backed by about 25 businesses, including Werner's Grocery, Sauter Brothers, Paulson Garage, the Block Hotel, Weix Drug and Genrich Implement.</span></li>
+      <li><time>1938</time><span>The village water tower goes up.</span></li>
+    </ul>
+  </div>
+  <div class="gallery">
+    <figure class="w12"><button type="button" data-full="img/1929-canning.jpg" aria-label="Enlarge: Central Canning"><img src="img/1929-canning.jpg" alt="Central Canning Co. factory with smokestacks and water tower" loading="lazy"></button>
+      <figcaption><b>Central Canning Co., Dorchester, 1929.</b></figcaption></figure>
+    <figure class="w7"><button type="button" data-full="img/1937-dorchester-days.jpg" aria-label="Enlarge: Dorchester Day Club billboard"><img src="img/1937-dorchester-days.jpg" alt="Dorchester Day Club billboard listing sponsoring businesses" loading="lazy"></button>
+      <figcaption><b>Dorchester Day Club billboard, 1937.</b> "Next Drawing $65.00."</figcaption></figure>
+    <figure class="w5"><button type="button" data-full="img/seidel-coat.jpg" aria-label="Enlarge: Seidel Bros coat"><img src="img/seidel-coat.jpg" alt="Tan work coat embroidered Seidel Bros D-X Service" loading="lazy"></button>
+      <figcaption><b>Seidel Bros. D-X Service coat, 1940s.</b> Worn for pumping gas. Dorchester Historical Center.</figcaption></figure>
+    <figure class="w8"><button type="button" data-full="img/1941-quarry.jpg" aria-label="Enlarge: stone quarry"><img src="img/1941-quarry.jpg" alt="Three men among cut stone blocks at a quarry" loading="lazy"></button>
+      <figcaption><b>The Dorchester stone quarry, 1941.</b></figcaption></figure>
+    <figure class="w4"><button type="button" data-full="img/1975-water-tower.jpg" aria-label="Enlarge: water tower"><img src="img/1975-water-tower.jpg" alt="Steel lattice water tower" loading="lazy"></button>
+      <figcaption><b>The water tower,</b> erected 1938.</figcaption></figure>
+  </div>
+</section>
+
+<section class="era" id="red-devils">
+  <div class="years">1913 – 1962</div>
+  <h2>The Dorchester Red Devils</h2>
+  <div class="text">
+    <p>Dorchester High School held a commencement as early as 1913, and its full four-year program began with the class of 1925. Boys played basketball, baseball, softball, kittenball, horseshoes, tennis, track and six-man touch football. Girls played basketball, kittenball, tennis and volleyball until 1945.</p>
+    <ul class="facts">
+      <li><time>1942</time><span>The Red Devils win the Three C Conference tournament, beating Loyal in the playoff.</span></li>
+      <li><time>1948–49</time><span>A 16–5 season, unbeaten at home, and a win at the Athens tournament.</span></li>
+      <li><time>1949–50</time><span>District champions again under coach Warren Otto. New jackets arrived by train during the first half of the last game and were worn for the second-half warm-up.</span></li>
+      <li><time>1962</time><span>The last Dorchester High School class graduates. From 1963, Dorchester students graduate from Dor-Abby High School with Abbotsford.</span></li>
+    </ul>
+  </div>
+  <div class="gallery">
+    <figure class="w12"><button type="button" data-full="img/1950-basketball.jpg" aria-label="Enlarge: 1949-50 basketball team"><img src="img/1950-basketball.jpg" alt="Basketball team in warm-up jackets with a trophy" loading="lazy"></button>
+      <figcaption><b>The 1949–50 Red Devils,</b> district champions, with coach Warren Otto.</figcaption></figure>
+  </div>
+</section>
+
+<section class="era" id="mid-century">
+  <div class="years">1940s – 1960s</div>
+  <h2>Mid-century Dorchester</h2>
+  <div class="text">
+    <p>The American Legion post was named Leach-Paulson Post 517 for two Dorchester High School graduates of 1940 who died in World War II, Sgt. Kenneth Leach and Pvt. Donald Paulson. Its auxiliary organized in March 1948, and a new Legion Hall opened in 1949.</p>
+    <p>A new post office opened in 1942. Ed Werner's Clover Farm store sold groceries and meats. The Dorchester Furniture Co. made coffee and end tables in the 1950s. The Lions Club ran a Halloween parade with movies, treats and prizes. A new grade school and a new Co-op feed mill opened in 1960, and the Laabs-Reynolds factory by 1968.</p>
+  </div>
+  <div class="gallery">
+    <figure class="w7"><button type="button" data-full="img/1951-aerial.jpg" aria-label="Enlarge: 1951 aerial"><img src="img/1951-aerial.jpg" alt="Newspaper aerial photo of the village with labeled landmarks" loading="lazy"></button>
+      <figcaption><b>Aerial view, 1951.</b> Main Street, Peace Church, Mertens Garage and the school are labeled.</figcaption></figure>
+    <figure class="w5"><button type="button" data-full="img/1942-clover-farm.jpg" aria-label="Enlarge: Clover Farm store"><img src="img/1942-clover-farm.jpg" alt="Clover Farm Stores storefront" loading="lazy"></button>
+      <figcaption><b>Ed Werner's Clover Farm store, 1942.</b></figcaption>
+      <div style="height:22px"></div>
+      <button type="button" data-full="img/1960-grade-school.jpg" aria-label="Enlarge: grade school"><img src="img/1960-grade-school.jpg" alt="Long single-story brick school in snow" loading="lazy"></button>
+      <figcaption><b>The new grade school, 1960.</b></figcaption></figure>
+    <figure class="w6"><button type="button" data-full="img/1957-halloween.jpg" aria-label="Enlarge: Halloween parade"><img src="img/1957-halloween.jpg" alt="Marching band in a Halloween parade" loading="lazy"></button>
+      <figcaption><b>The Lions Club Halloween parade, 1957.</b></figcaption></figure>
+    <figure class="w6"><button type="button" data-full="img/1958-front-street.jpg" aria-label="Enlarge: Front Street 1958"><img src="img/1958-front-street.jpg" alt="Front Street with 1950s cars" loading="lazy"></button>
+      <figcaption><b>Looking south from County A and Front Street, 1958.</b></figcaption></figure>
+  </div>
+</section>
+
+<section class="era" id="centennial">
+  <div class="years">1971 – 1980</div>
+  <h2>A lake, a park and a hundred years</h2>
+  <div class="text">
+    <p>Lake Dorchester was created around 1971, and volunteers built the park beside it. By 1980 it had a 15-acre stocked lake, a ball diamond, a swimming pool, tennis courts, playground equipment and two shelter houses. "The park is a real community undertaking," longtime volunteer Pinter told the <i>Times Review</i>. "Very few persons say no when asked to help do some work there." Dorchester Days grew around a state championship tractor pull.</p>
+    <p>On June 16, 1973, the village celebrated its centennial with a parade of horse teams, antique cars and floats. Floats came from the Dorchester Cheese Co., Dorchester State Bank, Meyer Lumber, Krueger Super Market, Sauter Bros., Kalepp Fish Farm, Schwoch Insurance, Mertens Garage, local taverns and churches, the 4-H, the Scouts, the American Legion and the Lions. Diane Royek rode as Dorchester Queen.</p>
+  </div>
+  <div class="gallery">
+    <figure class="w5"><button type="button" data-full="img/1971-lake.jpg" aria-label="Enlarge: Lake Dorchester"><img src="img/1971-lake.jpg" alt="Color aerial of the newly built Lake Dorchester" loading="lazy"></button>
+      <figcaption><b>Lake Dorchester looking north, 1971.</b></figcaption></figure>
+    <figure class="w7"><button type="button" data-full="img/1973-parade.jpg" aria-label="Enlarge: centennial parade"><img src="img/1973-parade.jpg" alt="Photo board of the 1973 centennial parade" loading="lazy"></button>
+      <figcaption><b>Dorchester Centennial Parade, 6-16-'73.</b> One of two photo boards at the historical center.</figcaption></figure>
+    <figure class="w12"><button type="button" data-full="img/park-paintings.jpg" aria-label="Enlarge: park paintings"><img src="img/park-paintings.jpg" alt="Three paintings of the Dorchester park and lake" loading="lazy"></button>
+      <figcaption><b>"Dorchester's Greatest Assets: The Dorchester Park and Lake."</b> Paintings by Grace (Dietel) Ensign.</figcaption></figure>
+  </div>
+</section>
+
+<section class="era" id="today">
+  <div class="years">1990 – today</div>
+  <h2>Recent years</h2>
+  <div class="text">
+    <ul class="facts">
+      <li><time>1990</time><span>The Legion post counts five living World War I veterans, aged 91 to 96: Otto Genrich, Henry Genrich, Bill Jantsch, Walter Tischendorf and Dr. A. W. Schief.</span></li>
+      <li><time>1991</time><span>A new bank building opens.</span></li>
+      <li><time>1995</time><span>Governor Tommy Thompson presents a $48,500 transportation grant to the village. Jim Jantsch serves as village president from 1995 to 2003.</span></li>
+      <li><time>2002</time><span>The Weyerhaeuser Company Foundation, on behalf of Northwest Hardwoods in Dorchester, gives $11,500 for emergency sirens at the north and south edges of the village.</span></li>
+      <li><time>Today</time><span>The Dorchester Historical Center keeps the town's artifacts, from rail spikes and milk cans to Bill Jantsch's centennial hat.</span></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="wrap notes">
+  <div>
+    <h3>Sources</h3>
+    <p>Artifacts and labels at the Dorchester Historical Center; family photographs and newspaper clippings from the <i>Dorchester Clarion</i>, <i>The New Era</i> and the <i>Times Review</i>; and a 1970 letter from James W. Lydon of the Soo Line.</p>
+    <p>See the historical center's artifact pages at <a href="http://www.dorchesterwi.com/historical-center/artifacts----one---twenty-five" target="_blank" rel="noopener">dorchesterwi.com</a>.</p>
+  </div>
+  <div>
+    <h3>Notes on dates</h3>
+    <ul>
+      <li>The historical center gives April 18, 1873 for the railroad's arrival. The Soo Line letter says the exact day isn't recorded.</li>
+      <li>One label dates the centennial celebration June 6, 1973. The parade boards say June 16.</li>
+      <li>Photo dates come from the family collection and are sometimes approximate.</li>
+    </ul>
+  </div>
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Enlarged photo">
+  <img id="lb-img" alt="">
+  <p id="lb-cap"></p>
+  <button type="button" id="lb-close">Close</button>
+</div>
+
+<script>
+(function(){
+  var lb=document.getElementById('lb'),img=document.getElementById('lb-img'),cap=document.getElementById('lb-cap'),closeBtn=document.getElementById('lb-close'),last=null;
+  function open(btn){
+    last=btn;
+    img.src=btn.getAttribute('data-full');
+    var i=btn.querySelector('img'); img.alt=i?i.alt:'';
+    var fc=btn.parentElement.querySelectorAll('figcaption'),c=null;
+    for(var k=0;k<fc.length;k++){ if(btn.compareDocumentPosition(fc[k])&Node.DOCUMENT_POSITION_FOLLOWING){c=fc[k];break;} }
+    cap.textContent=c?c.textContent:'';
+    lb.hidden=false; closeBtn.focus();
+  }
+  function close(){ lb.hidden=true; img.removeAttribute('src'); if(last) last.focus(); }
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('button[data-full]'); if(b){open(b);return;}
+    if(!lb.hidden && (e.target===lb||e.target===closeBtn)) close();
+  });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!lb.hidden) close(); });
+})();
+</script>
+
+</body>
+</html>

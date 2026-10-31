@@ -1,0 +1,8 @@
+{
+  "routes": [
+    { "route": "/img/*", "headers": { "cache-control": "public, max-age=604800" } }
+  ],
+  "responseOverrides": {
+    "404": { "rewrite": "/index.html" }
+  }
+}
