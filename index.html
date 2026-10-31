@@ -53,6 +53,16 @@ i{font-style:italic}
 .slip .here td{font-weight:700;text-decoration:underline}
 .slip small{display:block;margin-top:8px;font-size:12px;opacity:.75}
 
+.directory,.census{max-width:560px;margin:28px 0 8px;transform:rotate(-.6deg)}
+.directory dl{display:grid;grid-template-columns:9.5em minmax(0,1fr);gap:2px 12px;margin:0}
+.directory dt{font-weight:700}
+.directory dd{margin:0}
+.census ul{list-style:none;padding:0;margin:0;display:grid;gap:3px}
+.census li{display:grid;grid-template-columns:3em minmax(0,1fr) 2.6em;gap:10px;align-items:center;font-variant-numeric:tabular-nums}
+.census i{display:block;height:11px;width:calc(var(--n) / 876 * 100%);background:var(--slip-ink);opacity:.8}
+.census li span:last-child{text-align:right}
+@media (max-width:520px){.directory dl{grid-template-columns:minmax(0,1fr)}.directory dd{margin-bottom:4px}}
+
 /* Contents, like the front of a local history book */
 .contents{margin-top:56px;padding-top:20px;border-top:1px solid #3a3732}
 .contents h2{font-size:15px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);font-weight:400}
@@ -69,6 +79,7 @@ i{font-style:italic}
 .when{font-style:italic;color:var(--gold);font-size:20px}
 .chapter h2{font-size:clamp(32px,5vw,48px);margin:2px 0 22px}
 .dated p{padding-left:5.2em;text-indent:-5.2em}
+.dated p:not(:has(> b:first-child)){padding-left:0;text-indent:0}
 .dated b{display:inline-block;width:5.2em;text-indent:0;color:var(--gold);font-weight:700}
 .said{font-style:italic;color:var(--dim);margin:1.2em 0 1.4em;padding-left:1.2em;border-left:2px solid #4a463e}
 
@@ -139,6 +150,7 @@ i{font-style:italic}
   <div class="intro">
     <div class="text">
       <p>Dorchester started as a stop on the Wisconsin Central Railway, which was pushed north through the woods in the early 1870s. The railroad named its new stations after towns around Boston, and this one got the name of a small community that is now part of that city.</p>
+      <p>The village sits right on the 45th parallel, on high ground between the Eau Pleine River to the east and the Poplar River to the west. Rain on one side of town runs off toward the Wisconsin River, and rain on the other side toward the Black. Nearly all of Dorchester is in Clark County, though a sliver reaches into Marathon County.</p>
       <p>Danish, Norwegian, German and Bohemian families came on the train and stayed. They cleared stump land, worked in the sawmills, ran the stores and saloons on Front Street, and kept the village going through blizzards, fires and the closing of its high school. Most of what follows comes from the Dorchester Historical Center and from photographs local families have saved.</p>
     </div>
     <aside class="slip" aria-label="First known timetable naming Dorchester">
@@ -204,6 +216,7 @@ i{font-style:italic}
   <h2>Homesteads and first families</h2>
   <div class="text dated">
     <p>Settlers took up land on both sides of the tracks in what was then the Town of Mayville. Linda (Johnson) Mertens later mapped every homestead claim from 1870 to 1875. Daniel O. Miltimore (1838–1901) is remembered at the historical center as the "First Citizen of Dorchester."</p>
+    <p><b>1874</b> Miltimore starts clearing the townsite around July. In February 1876 the <i>Stevens Point Journal</i> calls him "the pioneer of Dorchester," its postmaster and merchant, and reports "a thriving village" whose school averages seventy-five pupils.</p>
     <p><b>1877</b> Andrew Sorenson arrives from Aarhus, Denmark. His father buys "the first parcel of railroad land sold in this vicinity," a mile and a half west of the village.</p>
     <p><b>1881</b> Frank and Mary Skerbeck, a Bohemian circus family, step off the train with four children to take up 120 acres of forest land.</p>
     <p><b>c. 1883</b> Dr. H. M. Nedry, "one of the first doctors of Dorchester country," begins a practice he keeps until 1910.</p>
@@ -275,7 +288,31 @@ i{font-style:italic}
   <div class="text">
     <p>Front Street ran along the tracks, unpaved, lined with saloons, stores and hotels. There were Kronschnabl's and Fred Marten's saloons, the "Jerk Water Saloon and Dance Hall," the Star Hotel, the Dorchester House, August Miller's hotel, Fred Distelhorst's brick store, Esser's Hall and an Opera House. The Dorchester State Bank opened in 1909 and the Co-op store by 1912. In 1919 a crew hauled in wagonloads of stone to level the street.</p>
     <p>The congregations built Salem Church, the "Little White Church" and St. Peter's Lutheran. The high school held its 1913 commencement in the Opera House for a class of seven, and a three-story brick high school stood by 1916.</p>
+    <p>A Clark County history from around 1915 says the village "at one time was an important mill town" and now prospered "as the center of a rich farming community." Its business directory reads like a walk down Front Street:</p>
   </div>
+  <aside class="slip directory" aria-label="Business directory, about 1915">
+    <h3>Dorchester business directory, about 1915</h3>
+    <dl>
+      <dt>Blacksmiths</dt><dd>J. Bauernfeind, Gust. Genrich</dd>
+      <dt>Bakery</dt><dd>George Bassler</dd>
+      <dt>Bank</dt><dd>Dorchester State Bank</dd>
+      <dt>General stores</dt><dd>Dorchester Co-operative Co., G. N. Schultz, L. Skruvani, Geo. Sprague</dd>
+      <dt>Dry goods</dt><dd>A. Katzin</dd>
+      <dt>Grocer</dt><dd>Miltimore &amp; Son</dd>
+      <dt>Feed &amp; flour</dt><dd>G. A. Bobbe, Paul Lotzer</dd>
+      <dt>Hardware</dt><dd>V. Fleckenstein, Mrs. A. Krackenberger, W. L. Peterson</dd>
+      <dt>Furniture</dt><dd>L. Fuchsgruber &amp; Son</dd>
+      <dt>Drugs</dt><dd>Aug. Homsted</dd>
+      <dt>Meats</dt><dd>Richard Schreiber</dd>
+      <dt>Cheese factory</dt><dd>Helmuth Janke</dd>
+      <dt>Hotels</dt><dd>Ludovic &amp; Sullivan, John Schmidt</dd>
+      <dt>Saloons</dt><dd>Albert Esser, Louis Garbisch, Albert Knaack, Fred Martin, Andrew Siegert, Frank Tepolt</dd>
+      <dt>Millinery</dt><dd>Bertha Miller</dd>
+      <dt>Lumber</dt><dd>O. Paulson</dd>
+      <dt>Saw mill</dt><dd>Fred Schmidt</dd>
+      <dt>Also</dt><dd>H. Kronschnabl, pool; John Buehrens, tinsmith; Jos. Rogolske, shoe repair; Sam Ugorets, junk</dd>
+    </dl>
+  </aside>
   <div class="spread wide">
     <figure class="print"><button type="button" data-full="img/1904-front-street.jpg" aria-label="Enlarge photo"><img src="img/1904-front-street.jpg" alt="Unpaved Front Street with storefronts and horse buggies, 1904" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Front Street looking south, 1904.</figcaption></figure>
@@ -461,7 +498,26 @@ i{font-style:italic}
     <p><b>2002</b> Ground is broken for a water treatment plant on June 28. The Weyerhaeuser Company Foundation, for Northwest Hardwoods in Dorchester, gives $11,500 for emergency sirens.</p>
     <p><b>2005</b> Jim Jantsch publishes <i>Dorchester: Small in Size, Big in History and Happenings</i>.</p>
     <p><b>2008</b> Lawrence Boxrucker, a Navy fireman who grew up on a farm outside Dorchester and was killed aboard the USS Oklahoma at Pearl Harbor, is identified almost 67 years later. He is buried with military honors at Dorchester Memorial Cemetery.</p>
+    <p><b>2020</b> The census counts 849 people, 846 in Clark County and 3 in Marathon County. That is more than at any point in the lumber days.</p>
+    <p><b>Today</b> Dorchester Days still comes around every June, built around the Wisconsin State Championship Tractor Pull, with a truck pull, a carnival, softball, volleyball and horseshoe tournaments, a kiddie parade, street dances and a Sunday chicken dinner.</p>
   </div>
+  <aside class="slip census" aria-label="Population of Dorchester by census year">
+    <h3>Population, U.S. Census</h3>
+    <ul>
+      <li><span>1880</span><i style="--n:244"></i><span>244</span></li>
+      <li><span>1890</span><i style="--n:350"></i><span>350</span></li>
+      <li><span>1910</span><i style="--n:476"></i><span>476</span></li>
+      <li><span>1920</span><i style="--n:519"></i><span>519</span></li>
+      <li><span>1930</span><i style="--n:400"></i><span>400</span></li>
+      <li><span>1950</span><i style="--n:457"></i><span>457</span></li>
+      <li><span>1980</span><i style="--n:613"></i><span>613</span></li>
+      <li><span>1990</span><i style="--n:697"></i><span>697</span></li>
+      <li><span>2000</span><i style="--n:827"></i><span>827</span></li>
+      <li><span>2010</span><i style="--n:876"></i><span>876</span></li>
+      <li><span>2020</span><i style="--n:849"></i><span>849</span></li>
+    </ul>
+    <small>Years not listed were not available. The drop after 1920 follows the end of the sawmill era.</small>
+  </aside>
 </section>
 
 <section class="chapter" id="people">
@@ -541,13 +597,15 @@ i{font-style:italic}
   <div>
     <h3>Where this comes from</h3>
     <p>Artifacts and labels at the Dorchester Historical Center, family photographs, clippings from the <i>Dorchester Clarion</i>, <i>The New Era</i>, the <i>Times Review</i> and the <i>Marshfield News-Herald</i>, a 1970 letter from James W. Lydon of the Soo Line, and Joan M. Jensen's article on the Skerbeck circus in <i>Voyageur</i> (2008).</p>
-    <p>The historical center's own artifact pages are at <a href="http://www.dorchesterwi.com/historical-center/artifacts----one---twenty-five" target="_blank" rel="noopener">dorchesterwi.com</a>.</p>
+    <p>Public sources: the <a href="https://www.wiclarkcountyhistory.org/clark/history/1915ClarkCoHistory/1_Dorchester.htm" target="_blank" rel="noopener">Clark County history</a> and <a href="https://www.wiclarkcountyhistory.org/4data/86/86904.htm" target="_blank" rel="noopener">1876 Stevens Point Journal item</a> on the Clark County History site, the <a href="https://dorchesterwi.gov/about-dorchester/" target="_blank" rel="noopener">Village of Dorchester</a>, U.S. Census counts as listed on <a href="https://en.wikipedia.org/wiki/Dorchester,_Wisconsin" target="_blank" rel="noopener">Wikipedia</a>, and <a href="https://travelwisconsin.com/events/fairs-festivals/dorchester-days-39921" target="_blank" rel="noopener">Travel Wisconsin</a>.</p>
+    <p>The historical center's own artifact pages are at <a href="https://dorchesterwi.gov/artifacts-one-twenty-five/" target="_blank" rel="noopener">dorchesterwi.gov</a>.</p>
   </div>
   <div>
     <h3>About the dates</h3>
     <ul>
       <li>The historical center gives April 18, 1873 for the first train. The Soo Line letter says the exact day wasn't recorded.</li>
       <li>One label puts the centennial celebration on June 6, 1973. The parade boards say June 16.</li>
+      <li>A family photo says the boxcar depot burned in 1896. A caption on the Clark County History site says the first depot burned in 1882.</li>
       <li>Photo dates come from family labels and are sometimes approximate. Corrections are welcome.</li>
     </ul>
   </div>
