@@ -117,6 +117,36 @@ i{font-style:italic}
 .lb img{max-width:100%;max-height:78vh;object-fit:contain;background:var(--print);padding:8px}
 .lb p{font-family:var(--typed);font-size:14px;color:var(--ink);max-width:56em;text-align:center;margin:0}
 .lb button{font-family:var(--typed);font-size:14px;background:var(--slip);color:var(--slip-ink);border:0;padding:6px 16px;cursor:pointer}
+.lb button:disabled{opacity:.35;cursor:default}
+.lb-bar{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center}
+.lb-count{font-family:var(--typed);font-size:13px;color:var(--dim);min-width:5em;text-align:center}
+.lb.on-wall{z-index:40}
+
+/* Photo wall */
+.wall-open{display:inline-block;margin-top:22px;font-family:var(--typed);font-size:15px;background:var(--slip);color:var(--slip-ink);text-decoration:none;padding:8px 14px;transform:rotate(-.6deg);box-shadow:0 8px 14px -10px rgba(0,0,0,.8)}
+.wall-open:hover{background:var(--gold)}
+.wall{position:fixed;inset:0;z-index:30;background:var(--page);overflow-y:auto;-webkit-overflow-scrolling:touch;
+  padding-block:calc(20px + env(safe-area-inset-top,0px)) calc(40px + env(safe-area-inset-bottom,0px))}
+.wall-head{display:grid;gap:14px;padding-bottom:18px;border-bottom:1px solid #3a3732;margin-bottom:26px}
+.wall-top{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:baseline;justify-content:space-between}
+.wall-top h2{font-size:clamp(28px,4.4vw,40px)}
+.wall-back{font-family:var(--typed);font-size:14px;background:none;color:var(--ink);border:1px solid #5a554c;padding:6px 14px;cursor:pointer}
+.wall-back:hover{border-color:var(--gold);color:var(--gold)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chips .lbl{font-style:italic;color:var(--dim);font-size:15px;margin-right:4px;min-width:4.2em}
+.chip{font-family:var(--typed);font-size:14px;background:var(--page-2);color:var(--ink);border:1px solid #3f3b34;padding:5px 11px;cursor:pointer;font-variant-numeric:tabular-nums}
+.chip:hover{border-color:var(--gold)}
+.chip[aria-pressed="true"]{background:var(--gold);color:#1d1c1a;border-color:var(--gold)}
+.chip small{opacity:.65;margin-left:4px;font-size:12px}
+.wall-count{font-style:italic;color:var(--dim);margin:0;font-size:15px}
+.wall-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(180px,46%),1fr));gap:22px 18px}
+.wall-grid li{min-width:0}
+.wall-grid button{all:unset;display:block;width:100%;cursor:zoom-in;background:var(--print);padding:6px 6px 8px;box-shadow:0 10px 16px -12px rgba(0,0,0,.9)}
+.wall-grid button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wall-grid .ph{display:block;aspect-ratio:4/3;overflow:hidden;background:#d9d3c4}
+.wall-grid img{display:block;width:100%;height:100%;object-fit:cover;filter:sepia(.08)}
+.wall-grid .yr{display:block;font-family:var(--typed);font-size:13px;color:var(--slip-ink);margin-top:6px;line-height:1.35}
+.wall-empty{font-style:italic;color:var(--dim)}
 
 @media (max-width:720px){
   body{font-size:17px}
@@ -168,7 +198,7 @@ i{font-style:italic}
   </div>
 
   <div class="spread wide">
-    <figure class="print"><button type="button" data-full="img/1889-harvest.jpg" aria-label="Enlarge photo"><img src="img/1889-harvest.jpg" alt="Crowd with a brass band and American flag in front of a large wooden building, 1889" width="1100" height="969"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1889-harvest.jpg" aria-label="Enlarge photo"><img width="1100" height="970" src="img/1889-harvest.jpg" alt="Crowd with a brass band and American flag in front of a large wooden building, 1889"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>The Harvest Festival, German Farmers Aid Society, Dorchester, Sept. 16, 1889.</figcaption></figure>
   </div>
 
@@ -188,6 +218,7 @@ i{font-style:italic}
       <li><a href="#today"><span>Recent years</span><span class="dots"></span><span class="yr">1990</span></a></li>
       <li><a href="#people"><span>People of Dorchester</span><span class="dots"></span><span class="yr"></span></a></li>
     </ol>
+    <a class="wall-open" href="#photos">Browse every photo by decade &rarr;</a>
   </nav>
 </header>
 
@@ -202,11 +233,11 @@ i{font-style:italic}
     <p>The first iron rails twisted out of shape in the northern weather and were replaced with steel in 1886. For a depot, the railroad set an old boxcar beside the track. It burned in 1896.</p>
   </div>
   <div class="spread">
-    <figure class="print"><button type="button" data-full="img/1882-depot.jpg" aria-label="Enlarge photo"><img src="img/1882-depot.jpg" alt="Wisconsin Central boxcar used as a depot" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1882-depot.jpg" aria-label="Enlarge photo"><img width="938" height="709" src="img/1882-depot.jpg" alt="Wisconsin Central boxcar used as a depot" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>The first depot, 1882. A Wisconsin Central boxcar on a plank platform.</figcaption></figure>
-    <figure class="print"><button type="button" data-full="img/lydon-letter.jpg" aria-label="Enlarge photo"><img src="img/lydon-letter.jpg" alt="Typed letter from James W. Lydon, 1970" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/lydon-letter.jpg" aria-label="Enlarge photo"><img width="918" height="1100" src="img/lydon-letter.jpg" alt="Typed letter from James W. Lydon, 1970" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>James W. Lydon of the Soo Line to Village President Ted Schwoch, 1970.</figcaption></figure>
-    <figure class="print"><button type="button" data-full="img/rail-hardware.jpg" aria-label="Enlarge photo"><img src="img/rail-hardware.jpg" alt="Rail spikes, clips and tie plate mounted on a board" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/rail-hardware.jpg" aria-label="Enlarge photo"><img width="1100" height="961" src="img/rail-hardware.jpg" alt="Rail spikes, clips and tie plate mounted on a board" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Spikes and rail clips, believed to be from the 1886 steel track.</figcaption></figure>
   </div>
 </section>
@@ -224,15 +255,15 @@ i{font-style:italic}
     <p><b>1888</b> A. F. F. Jensen builds a two-story, 26-by-60-foot general store.</p>
   </div>
   <div class="spread">
-    <figure class="print"><button type="button" data-full="img/1875-map.jpg" aria-label="Enlarge photo"><img src="img/1875-map.jpg" alt="Map of Town of Mayville homestead claims, 1875" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1875-map.jpg" aria-label="Enlarge photo"><img width="1100" height="1035" src="img/1875-map.jpg" alt="Map of Town of Mayville homestead claims, 1875" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Town of Mayville and surrounding area, 1875. Drawn by Linda (Johnson) Mertens.</figcaption></figure>
-    <figure class="print tall"><button type="button" data-full="img/miltimore.jpg" aria-label="Enlarge photo"><img src="img/miltimore.jpg" alt="Framed portrait of Daniel O. Miltimore" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print tall"><button type="button" data-full="img/miltimore.jpg" aria-label="Enlarge photo"><img width="952" height="1100" src="img/miltimore.jpg" alt="Framed portrait of Daniel O. Miltimore" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Daniel O. Miltimore, 1838–1901.</figcaption></figure>
   </div>
   <div class="spread">
-    <figure class="print"><button type="button" data-full="img/1880-pioneer-home.jpg" aria-label="Enlarge photo"><img src="img/1880-pioneer-home.jpg" alt="Log cabin in a cutover clearing full of stumps" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1880-pioneer-home.jpg" aria-label="Enlarge photo"><img width="1100" height="710" src="img/1880-pioneer-home.jpg" alt="Log cabin in a cutover clearing full of stumps" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>A pioneer log house near Dorchester, about 1880.</figcaption></figure>
-    <figure class="print"><button type="button" data-full="img/1888-mercantile.jpg" aria-label="Enlarge photo"><img src="img/1888-mercantile.jpg" alt="Engraved drawing of A. F. F. Jensen's general store" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1888-mercantile.jpg" aria-label="Enlarge photo"><img width="702" height="671" src="img/1888-mercantile.jpg" alt="Engraved drawing of A. F. F. Jensen's general store" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>General Store of A. F. F. Jensen, 1888.</figcaption></figure>
   </div>
 </section>
@@ -245,23 +276,23 @@ i{font-style:italic}
     <p>Many of the newcomers spoke German. A trunk at the historical center is addressed by hand to Johann Jantsch in "Nord Amerika." In September 1889 the German Farmers Aid Society held a harvest festival with a full brass band. By 1898 <i>The New Era</i> carried ads for the Dorchester Roller Mills and its "Monogram Flour."</p>
   </div>
   <div class="spread wide">
-    <figure class="print"><button type="button" data-full="img/1890-vandusen-sawmill.jpg" aria-label="Enlarge photo"><img src="img/1890-vandusen-sawmill.jpg" alt="Large wooden sawmill with smokestack, log ramp, crew and millpond" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1890-vandusen-sawmill.jpg" aria-label="Enlarge photo"><img width="1100" height="820" src="img/1890-vandusen-sawmill.jpg" alt="Large wooden sawmill with smokestack, log ramp, crew and millpond" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>The Van Dusen sawmill, about 1890. The first mill in Dorchester, where the lake is now.</figcaption></figure>
   </div>
   <div class="spread">
-    <figure class="print"><button type="button" data-full="img/1905-paulson-sawmill.jpg" aria-label="Enlarge photo"><img src="img/1905-paulson-sawmill.jpg" alt="Sawmill yard with log piles and horse teams" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1905-paulson-sawmill.jpg" aria-label="Enlarge photo"><img width="1100" height="808" src="img/1905-paulson-sawmill.jpg" alt="Sawmill yard with log piles and horse teams" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Paulson's sawmill, 1905.</figcaption></figure>
-    <figure class="print tall"><button type="button" data-full="img/1898-logs-kids.jpg" aria-label="Enlarge photo"><img src="img/1898-logs-kids.jpg" alt="Children sitting in a huge stack of logs" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print tall"><button type="button" data-full="img/1898-logs-kids.jpg" aria-label="Enlarge photo"><img width="602" height="946" src="img/1898-logs-kids.jpg" alt="Children sitting in a huge stack of logs" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Kids playing in the logs, 1898.</figcaption></figure>
   </div>
   <div class="spread">
-    <figure class="print"><button type="button" data-full="img/1909-unloading-logs.jpg" aria-label="Enlarge photo"><img src="img/1909-unloading-logs.jpg" alt="Men unloading logs from a railroad flatcar in snow" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1909-unloading-logs.jpg" aria-label="Enlarge photo"><img width="1100" height="628" src="img/1909-unloading-logs.jpg" alt="Men unloading logs from a railroad flatcar in snow" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Unloading logs from a railroad car, 1909.</figcaption></figure>
-    <figure class="print"><button type="button" data-full="img/vandusen-stencil.jpg" aria-label="Enlarge photo"><img src="img/vandusen-stencil.jpg" alt="Metal stencil reading Van Dusen and Co, Shaded A, Dorchester Wis" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/vandusen-stencil.jpg" aria-label="Enlarge photo"><img width="1100" height="921" src="img/vandusen-stencil.jpg" alt="Metal stencil reading Van Dusen and Co, Shaded A, Dorchester Wis" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Van Dusen &amp; Co. lumber stencil.</figcaption></figure>
   </div>
   <div class="spread wide">
-    <figure class="print"><button type="button" data-full="img/1900-threshing.jpg" aria-label="Enlarge photo"><img src="img/1900-threshing.jpg" alt="Steam engine powering a threshing machine beside a barn" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1900-threshing.jpg" aria-label="Enlarge photo"><img width="1100" height="669" src="img/1900-threshing.jpg" alt="Steam engine powering a threshing machine beside a barn" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Threshing, about 1900.</figcaption></figure>
   </div>
 </section>
@@ -275,9 +306,9 @@ i{font-style:italic}
     <p>Andrew Sorenson was the first village treasurer. He later served twenty years as street commissioner and constable.</p>
   </div>
   <div class="spread">
-    <figure class="print tall"><button type="button" data-full="img/1901-election.jpg" aria-label="Enlarge photo"><img src="img/1901-election.jpg" alt="Handwritten 1901 election notice" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print tall"><button type="button" data-full="img/1901-election.jpg" aria-label="Enlarge photo"><img width="742" height="1100" src="img/1901-election.jpg" alt="Handwritten 1901 election notice" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Election notice, Oct. 23, 1901.</figcaption></figure>
-    <figure class="print"><button type="button" data-full="img/1898-new-era.jpg" aria-label="Enlarge photo"><img src="img/1898-new-era.jpg" alt="Fragile 1898 front page of The New Era" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1898-new-era.jpg" aria-label="Enlarge photo"><img width="1100" height="782" src="img/1898-new-era.jpg" alt="Fragile 1898 front page of The New Era" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption><i>The New Era</i>, 1898.</figcaption></figure>
   </div>
 </section>
@@ -314,41 +345,41 @@ i{font-style:italic}
     </dl>
   </aside>
   <div class="spread wide">
-    <figure class="print"><button type="button" data-full="img/1904-front-street.jpg" aria-label="Enlarge photo"><img src="img/1904-front-street.jpg" alt="Unpaved Front Street with storefronts and horse buggies, 1904" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1904-front-street.jpg" aria-label="Enlarge photo"><img width="1098" height="656" src="img/1904-front-street.jpg" alt="Unpaved Front Street with storefronts and horse buggies, 1904" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Front Street looking south, 1904.</figcaption></figure>
   </div>
   <div class="spread">
-    <figure class="print"><button type="button" data-full="img/1896-star-hotel.jpg" aria-label="Enlarge photo"><img src="img/1896-star-hotel.jpg" alt="Two-story frame hotel with a STAR HOTEL awning and men on the porch" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1896-star-hotel.jpg" aria-label="Enlarge photo"><img width="1100" height="710" src="img/1896-star-hotel.jpg" alt="Two-story frame hotel with a STAR HOTEL awning and men on the porch" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>The Star Hotel, built 1886 on South Front Street.</figcaption></figure>
-    <figure class="print"><button type="button" data-full="img/1895-big-store.jpg" aria-label="Enlarge photo"><img src="img/1895-big-store.jpg" alt="Two-story brick corner store with an 1892 date stone" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1895-big-store.jpg" aria-label="Enlarge photo"><img width="1100" height="765" src="img/1895-big-store.jpg" alt="Two-story brick corner store with an 1892 date stone" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Fred Distelhorst's store, built 1892.</figcaption></figure>
   </div>
   <div class="spread">
-    <figure class="print"><button type="button" data-full="img/1901-front-st.jpg" aria-label="Enlarge photo"><img src="img/1901-front-st.jpg" alt="Ox team and wagon on muddy Front Street" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1901-front-st.jpg" aria-label="Enlarge photo"><img width="1100" height="835" src="img/1901-front-st.jpg" alt="Ox team and wagon on muddy Front Street" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Oxen in front of the Star Hotel, 1901. Al Sauter and Frank Skerbeck on the wagon, Dr. Crane standing.</figcaption></figure>
-    <figure class="print"><button type="button" data-full="img/1901-chicken-days.jpg" aria-label="Enlarge photo"><img src="img/1901-chicken-days.jpg" alt="Horse wagons and early cars gathered near a depot" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1901-chicken-days.jpg" aria-label="Enlarge photo"><img width="1100" height="730" src="img/1901-chicken-days.jpg" alt="Horse wagons and early cars gathered near a depot" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>"Chicken Day," the forerunner of Dorchester Days. Marked 1901, though the cars look later.</figcaption></figure>
   </div>
   <div class="spread">
-    <figure class="print"><button type="button" data-full="img/1912-front-street.jpg" aria-label="Enlarge photo"><img src="img/1912-front-street.jpg" alt="Front Street looking north with brick storefronts" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1912-front-street.jpg" aria-label="Enlarge photo"><img width="1098" height="663" src="img/1912-front-street.jpg" alt="Front Street looking north with brick storefronts" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Front Street looking north, about 1912.</figcaption></figure>
-    <figure class="print"><button type="button" data-full="img/1909-bank.jpg" aria-label="Enlarge photo"><img src="img/1909-bank.jpg" alt="Small brick bank with striped awnings" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1909-bank.jpg" aria-label="Enlarge photo"><img width="550" height="349" src="img/1909-bank.jpg" alt="Small brick bank with striped awnings" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Dorchester State Bank, 1909.</figcaption></figure>
   </div>
   <div class="spread">
-    <figure class="print"><button type="button" data-full="img/1912-st-peters.jpg" aria-label="Enlarge photo"><img src="img/1912-st-peters.jpg" alt="Brick Lutheran church with steeple and parsonage" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1912-st-peters.jpg" aria-label="Enlarge photo"><img width="900" height="682" src="img/1912-st-peters.jpg" alt="Brick Lutheran church with steeple and parsonage" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>St. Peter's Lutheran Church and parsonage, 1912.</figcaption></figure>
-    <figure class="print"><button type="button" data-full="img/1914-miller-hotel.jpg" aria-label="Enlarge photo"><img src="img/1914-miller-hotel.jpg" alt="Two women in a hotel kitchen with a wood stove" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1914-miller-hotel.jpg" aria-label="Enlarge photo"><img width="1100" height="786" src="img/1914-miller-hotel.jpg" alt="Two women in a hotel kitchen with a wood stove" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>The kitchen at August Miller's hotel, 1914.</figcaption></figure>
   </div>
   <div class="spread">
-    <figure class="print"><button type="button" data-full="img/1910-depot.jpg" aria-label="Enlarge photo"><img src="img/1910-depot.jpg" alt="Four men with shovels in front of the depot" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1910-depot.jpg" aria-label="Enlarge photo"><img width="1100" height="655" src="img/1910-depot.jpg" alt="Four men with shovels in front of the depot" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>The old depot, about 1910. Henry Malchow, Joe Weber, Rudy Ulrich and Frank Weber.</figcaption></figure>
-    <figure class="print"><button type="button" data-full="img/1916-high-school.jpg" aria-label="Enlarge photo"><img src="img/1916-high-school.jpg" alt="Three-story brick high school" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1916-high-school.jpg" aria-label="Enlarge photo"><img width="1056" height="730" src="img/1916-high-school.jpg" alt="Three-story brick high school" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Dorchester High School, 1916.</figcaption></figure>
   </div>
   <div class="spread wide">
-    <figure class="print"><button type="button" data-full="img/1919-working-front-st.jpg" aria-label="Enlarge photo"><img src="img/1919-working-front-st.jpg" alt="Men spreading stone from a horse wagon on Front Street" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1919-working-front-st.jpg" aria-label="Enlarge photo"><img width="1076" height="663" src="img/1919-working-front-st.jpg" alt="Men spreading stone from a horse wagon on Front Street" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>"Filling Front St. with stones," 1919, in front of John L. Sturner's store.</figcaption></figure>
   </div>
 </section>
@@ -362,19 +393,19 @@ i{font-style:italic}
     <p>On February 13, 1931, crowds watched the Joe Kronschnabl building burn. It held the family's home and, in front, a saloon and bowling alley run by Carl Mertens. Two chemical trucks held the fire for an hour, but "the old relic of a fire engine refused to operate," and help came from Colby. Mertens reopened in the garage next door.</p>
   </div>
   <div class="spread">
-    <figure class="print"><button type="button" data-full="img/1917-snow-train.jpg" aria-label="Enlarge photo"><img src="img/1917-snow-train.jpg" alt="Steam locomotive buried in deep snow" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1917-snow-train.jpg" aria-label="Enlarge photo"><img width="1068" height="640" src="img/1917-snow-train.jpg" alt="Steam locomotive buried in deep snow" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>"Snow bound scene at Dorchester, Wis.," March 18, 1917.</figcaption></figure>
-    <figure class="print"><button type="button" data-full="img/1917-clearing-track.jpg" aria-label="Enlarge photo"><img src="img/1917-clearing-track.jpg" alt="Large crew shoveling snow from the railroad cut" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1917-clearing-track.jpg" aria-label="Enlarge photo"><img width="1076" height="648" src="img/1917-clearing-track.jpg" alt="Large crew shoveling snow from the railroad cut" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Clearing the track, March 1917.</figcaption></figure>
   </div>
   <div class="spread wide">
-    <figure class="print"><button type="button" data-full="img/1923-after-fire.jpg" aria-label="Enlarge photo"><img src="img/1923-after-fire.jpg" alt="Burned rubble and a standing chimney on Front Street" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1923-after-fire.jpg" aria-label="Enlarge photo"><img width="1068" height="640" src="img/1923-after-fire.jpg" alt="Burned rubble and a standing chimney on Front Street" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>The day after the 1923 fire, looking north up South Front Street.</figcaption></figure>
   </div>
   <div class="spread">
-    <figure class="print"><button type="button" data-full="img/1920-blacksmith.jpg" aria-label="Enlarge photo"><img src="img/1920-blacksmith.jpg" alt="Book page showing Joe Bauernfeind's blacksmith shop and interior" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1920-blacksmith.jpg" aria-label="Enlarge photo"><img width="837" height="1100" src="img/1920-blacksmith.jpg" alt="Book page showing Joe Bauernfeind's blacksmith shop and interior" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Joe Bauernfeind's blacksmith and welding shop, about 1920. Lost in the 1923 fire.</figcaption></figure>
-    <figure class="print"><button type="button" data-full="img/1931-fire.jpg" aria-label="Enlarge photo"><img src="img/1931-fire.jpg" alt="Newspaper column: Crowds Watch Blaze Destroy Krony Building" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1931-fire.jpg" aria-label="Enlarge photo"><img width="621" height="1100" src="img/1931-fire.jpg" alt="Newspaper column: Crowds Watch Blaze Destroy Krony Building" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>"Crowds Watch Blaze Destroy Krony Building," February 1931.</figcaption></figure>
   </div>
 </section>
@@ -392,19 +423,19 @@ i{font-style:italic}
     <p><b>1938</b> The village water tower goes up.</p>
   </div>
   <div class="spread wide">
-    <figure class="print"><button type="button" data-full="img/1929-canning.jpg" aria-label="Enlarge photo"><img src="img/1929-canning.jpg" alt="Central Canning Co. factory with smokestacks and water tower" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1929-canning.jpg" aria-label="Enlarge photo"><img width="1068" height="480" src="img/1929-canning.jpg" alt="Central Canning Co. factory with smokestacks and water tower" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Central Canning Co., Dorchester, 1929.</figcaption></figure>
   </div>
   <div class="spread">
-    <figure class="print"><button type="button" data-full="img/1937-dorchester-days.jpg" aria-label="Enlarge photo"><img src="img/1937-dorchester-days.jpg" alt="Dorchester Day Club billboard listing sponsoring businesses" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1937-dorchester-days.jpg" aria-label="Enlarge photo"><img width="1084" height="725" src="img/1937-dorchester-days.jpg" alt="Dorchester Day Club billboard listing sponsoring businesses" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Dorchester Day Club, 1937. "Next Drawing $65.00."</figcaption></figure>
-    <figure class="print tall"><button type="button" data-full="img/seidel-coat.jpg" aria-label="Enlarge photo"><img src="img/seidel-coat.jpg" alt="Tan work coat embroidered Seidel Bros D-X Service" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print tall"><button type="button" data-full="img/seidel-coat.jpg" aria-label="Enlarge photo"><img width="551" height="1100" src="img/seidel-coat.jpg" alt="Tan work coat embroidered Seidel Bros D-X Service" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Seidel Bros. D-X Service coat, 1940s.</figcaption></figure>
   </div>
   <div class="spread">
-    <figure class="print"><button type="button" data-full="img/1941-quarry.jpg" aria-label="Enlarge photo"><img src="img/1941-quarry.jpg" alt="Three men among cut stone blocks at a quarry" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1941-quarry.jpg" aria-label="Enlarge photo"><img width="1077" height="715" src="img/1941-quarry.jpg" alt="Three men among cut stone blocks at a quarry" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>The Dorchester stone quarry, 1941.</figcaption></figure>
-    <figure class="print small"><button type="button" data-full="img/1975-water-tower.jpg" aria-label="Enlarge photo"><img src="img/1975-water-tower.jpg" alt="Steel lattice water tower" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print small"><button type="button" data-full="img/1975-water-tower.jpg" aria-label="Enlarge photo"><img width="618" height="602" src="img/1975-water-tower.jpg" alt="Steel lattice water tower" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>The water tower, put up in 1938.</figcaption></figure>
   </div>
 </section>
@@ -420,9 +451,9 @@ i{font-style:italic}
     <p><b>1962</b> The last Dorchester High School class graduates. From 1963 on, Dorchester students graduate from Dor-Abby High School with Abbotsford.</p>
   </div>
   <div class="spread">
-    <figure class="print"><button type="button" data-full="img/1937-aces.jpg" aria-label="Enlarge photo"><img src="img/1937-aces.jpg" alt="Nine basketball players in ACES warm-ups" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1937-aces.jpg" aria-label="Enlarge photo"><img width="1100" height="908" src="img/1937-aces.jpg" alt="Nine basketball players in ACES warm-ups" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>The 1937 Dorchester Aces, a town team sponsored by the Commercial Club.</figcaption></figure>
-    <figure class="print"><button type="button" data-full="img/1950-basketball.jpg" aria-label="Enlarge photo"><img src="img/1950-basketball.jpg" alt="Basketball team in warm-up jackets with a trophy" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1950-basketball.jpg" aria-label="Enlarge photo"><img width="1100" height="875" src="img/1950-basketball.jpg" alt="Basketball team in warm-up jackets with a trophy" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>The 1949–50 Red Devils with coach Warren Otto.</figcaption></figure>
   </div>
 </section>
@@ -436,35 +467,35 @@ i{font-style:italic}
     <p>In September 1959 fire took Carlson's Garage, a building more than 75 years old that had once been Dorchester's public school. It had been moved after the newer school went up around 1916 and spent decades as Edgar Paulson's garage. In 1965 the village took bids to replace its old frame village hall, "erected about a half century ago." The new municipal building, about $69,000, opened in January 1966 with room for the fire department that served the north halves of Mayville and Holton towns.</p>
   </div>
   <div class="spread">
-    <figure class="print"><button type="button" data-full="img/1951-aerial.jpg" aria-label="Enlarge photo"><img src="img/1951-aerial.jpg" alt="Newspaper aerial photo of the village with labeled landmarks" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1951-aerial.jpg" aria-label="Enlarge photo"><img width="1000" height="792" src="img/1951-aerial.jpg" alt="Newspaper aerial photo of the village with labeled landmarks" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>The village from the air, 1951.</figcaption></figure>
-    <figure class="print"><button type="button" data-full="img/1942-clover-farm.jpg" aria-label="Enlarge photo"><img src="img/1942-clover-farm.jpg" alt="Clover Farm Stores storefront" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1942-clover-farm.jpg" aria-label="Enlarge photo"><img width="674" height="446" src="img/1942-clover-farm.jpg" alt="Clover Farm Stores storefront" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Ed Werner's Clover Farm store, 1942.</figcaption></figure>
   </div>
   <div class="spread">
-    <figure class="print"><button type="button" data-full="img/1957-halloween.jpg" aria-label="Enlarge photo"><img src="img/1957-halloween.jpg" alt="Marching band in a Halloween parade" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1957-halloween.jpg" aria-label="Enlarge photo"><img width="1028" height="619" src="img/1957-halloween.jpg" alt="Marching band in a Halloween parade" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>The Lions Club Halloween parade, 1957.</figcaption></figure>
-    <figure class="print"><button type="button" data-full="img/1958-front-street.jpg" aria-label="Enlarge photo"><img src="img/1958-front-street.jpg" alt="Front Street with 1950s cars" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1958-front-street.jpg" aria-label="Enlarge photo"><img width="1100" height="586" src="img/1958-front-street.jpg" alt="Front Street with 1950s cars" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Looking south from County A and Front Street, 1958.</figcaption></figure>
   </div>
   <div class="spread">
-    <figure class="print"><button type="button" data-full="img/1940-st-louis-interior.jpg" aria-label="Enlarge photo"><img src="img/1940-st-louis-interior.jpg" alt="Interior of St. Louis Church with pews and high altar" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1940-st-louis-interior.jpg" aria-label="Enlarge photo"><img width="900" height="765" src="img/1940-st-louis-interior.jpg" alt="Interior of St. Louis Church with pews and high altar" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>St. Louis Church, 1940, Father Weller, pastor. Before a later fire.</figcaption></figure>
-    <figure class="print tall"><button type="button" data-full="img/1955-white-pine.jpg" aria-label="Enlarge photo"><img src="img/1955-white-pine.jpg" alt="Large white pine on a residential corner" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print tall"><button type="button" data-full="img/1955-white-pine.jpg" aria-label="Enlarge photo"><img width="1005" height="1100" src="img/1955-white-pine.jpg" alt="Large white pine on a residential corner" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>The oldest white pine in the county, South 3rd Street, 1955.</figcaption></figure>
   </div>
   <div class="spread">
-    <figure class="print"><button type="button" data-full="img/1959-school-burns.jpg" aria-label="Enlarge photo"><img src="img/1959-school-burns.jpg" alt="Newspaper photo of firefighters at a burning building" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1959-school-burns.jpg" aria-label="Enlarge photo"><img width="1100" height="820" src="img/1959-school-burns.jpg" alt="Newspaper photo of firefighters at a burning building" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>The old school house burns, September 1959.</figcaption></figure>
-    <figure class="print"><button type="button" data-full="img/1961-steam-engine.jpg" aria-label="Enlarge photo"><img src="img/1961-steam-engine.jpg" alt="Steam traction engine carrying nuns and children" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1961-steam-engine.jpg" aria-label="Enlarge photo"><img width="1100" height="846" src="img/1961-steam-engine.jpg" alt="Steam traction engine carrying nuns and children" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>The Reynolds steam engine gives the nuns a ride, 1961.</figcaption></figure>
   </div>
   <div class="spread">
-    <figure class="print"><button type="button" data-full="img/1960-grade-school.jpg" aria-label="Enlarge photo"><img src="img/1960-grade-school.jpg" alt="Long single-story brick school in snow" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1960-grade-school.jpg" aria-label="Enlarge photo"><img width="1100" height="533" src="img/1960-grade-school.jpg" alt="Long single-story brick school in snow" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>The new grade school, 1960.</figcaption></figure>
-    <figure class="print"><button type="button" data-full="img/1966-new-village-hall.jpg" aria-label="Enlarge photo"><img src="img/1966-new-village-hall.jpg" alt="Clipping showing the new municipal building" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1966-new-village-hall.jpg" aria-label="Enlarge photo"><img width="1100" height="666" src="img/1966-new-village-hall.jpg" alt="Clipping showing the new municipal building" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>The new village hall, January 1966.</figcaption></figure>
-    <figure class="print"><button type="button" data-full="img/1965-old-village-hall.jpg" aria-label="Enlarge photo"><img src="img/1965-old-village-hall.jpg" alt="Clipping: Dorchester May Replace Village Hall" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1965-old-village-hall.jpg" aria-label="Enlarge photo"><img width="1018" height="1100" src="img/1965-old-village-hall.jpg" alt="Clipping: Dorchester May Replace Village Hall" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>"Dorchester may replace village hall," 1965.</figcaption></figure>
   </div>
 </section>
@@ -477,13 +508,13 @@ i{font-style:italic}
     <p>On June 16, 1973, the village marked its hundredth year with a parade of horse teams, old cars and floats from the Dorchester Cheese Co., the bank, Meyer Lumber, Krueger Super Market, Sauter Bros., Kalepp Fish Farm, Schwoch Insurance, Mertens Garage, the taverns and churches, the 4-H, the Scouts, the Legion and the Lions. Diane Royek rode as Dorchester Queen.</p>
   </div>
   <div class="spread">
-    <figure class="print small"><button type="button" data-full="img/1971-lake.jpg" aria-label="Enlarge photo"><img src="img/1971-lake.jpg" alt="Color aerial of the newly built Lake Dorchester" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print small"><button type="button" data-full="img/1971-lake.jpg" aria-label="Enlarge photo"><img width="629" height="636" src="img/1971-lake.jpg" alt="Color aerial of the newly built Lake Dorchester" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Lake Dorchester looking north, 1971.</figcaption></figure>
-    <figure class="print"><button type="button" data-full="img/1973-parade.jpg" aria-label="Enlarge photo"><img src="img/1973-parade.jpg" alt="Photo board of the 1973 centennial parade" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/1973-parade.jpg" aria-label="Enlarge photo"><img width="1100" height="885" src="img/1973-parade.jpg" alt="Photo board of the 1973 centennial parade" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Dorchester Centennial Parade, 6-16-'73.</figcaption></figure>
   </div>
   <div class="spread wide">
-    <figure class="print"><button type="button" data-full="img/park-paintings.jpg" aria-label="Enlarge photo"><img src="img/park-paintings.jpg" alt="Three paintings of the Dorchester park and lake" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/park-paintings.jpg" aria-label="Enlarge photo"><img width="1100" height="1082" src="img/park-paintings.jpg" alt="Three paintings of the Dorchester park and lake" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>"Dorchester's Greatest Assets: The Dorchester Park and Lake." Paintings by Grace (Dietel) Ensign.</figcaption></figure>
   </div>
 </section>
@@ -528,65 +559,65 @@ i{font-style:italic}
     <p>The Skerbecks came the furthest. Frank Skerbeck was a Bohemian sword swallower and high-wire walker whose family circus had toured Europe. After it went broke, a land agent sold him on northern Wisconsin, and in 1881 the family got off the train at Dorchester. Their 120 acres turned out to be thick forest, so they sold the timber to the Dorchester sawmill, and Frank trained the children in the barn. For about 25 years they played vaudeville in winter and toured under canvas in summer, and for a few years they joined Medford's Ephraim Williams in the "Consolidated American and German Railroad Shows." The family stayed. Their story is told in Joan M. Jensen's "The Skerbeck Circus," <i>Voyageur</i> magazine, 2008.</p>
   </div>
   <div class="spread">
-    <figure class="print tall"><button type="button" data-full="img/people-joe-weber.jpg" aria-label="Enlarge photo"><img src="img/people-joe-weber.jpg" alt="Young man with a view camera on a tripod" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print tall"><button type="button" data-full="img/people-joe-weber.jpg" aria-label="Enlarge photo"><img width="679" height="1059" src="img/people-joe-weber.jpg" alt="Young man with a view camera on a tripod" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Joe Weber and his camera, 1911.</figcaption></figure>
-    <figure class="print"><button type="button" data-full="img/people-kronschnabl-carriers.jpg" aria-label="Enlarge photo"><img src="img/people-kronschnabl-carriers.jpg" alt="Two mail cars outside the post office with flags" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/people-kronschnabl-carriers.jpg" aria-label="Enlarge photo"><img width="1022" height="648" src="img/people-kronschnabl-carriers.jpg" alt="Two mail cars outside the post office with flags" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Joe Weber, Postmaster Herman Kronschnabl and George LeClaire, 1918. LeClaire carried Route 1 from 1905, about 8,600 miles a year.</figcaption></figure>
   </div>
   <div class="spread">
-    <figure class="print tall"><button type="button" data-full="img/people-lansford-girls.jpg" aria-label="Enlarge photo"><img src="img/people-lansford-girls.jpg" alt="Seven young women in dark Victorian dresses" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print tall"><button type="button" data-full="img/people-lansford-girls.jpg" aria-label="Enlarge photo"><img width="791" height="853" src="img/people-lansford-girls.jpg" alt="Seven young women in dark Victorian dresses" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Luella, Mabel, Anna, Ida, Calla, Elizabeth and Alma Lansford, 1896. Their father John homesteaded 160 acres at Dorchester in 1876.</figcaption></figure>
-    <figure class="print tall"><button type="button" data-full="img/people-paulsons.jpg" aria-label="Enlarge photo"><img src="img/people-paulsons.jpg" alt="Studio portrait of a seated woman and standing man" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print tall"><button type="button" data-full="img/people-paulsons.jpg" aria-label="Enlarge photo"><img width="773" height="1100" src="img/people-paulsons.jpg" alt="Studio portrait of a seated woman and standing man" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Olaf and Johanna Paulson, 1898.</figcaption></figure>
   </div>
   <div class="spread">
-    <figure class="print"><button type="button" data-full="img/people-sorenson-brothers.jpg" aria-label="Enlarge photo"><img src="img/people-sorenson-brothers.jpg" alt="Six men in suits in an oval frame" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/people-sorenson-brothers.jpg" aria-label="Enlarge photo"><img width="640" height="480" src="img/people-sorenson-brothers.jpg" alt="Six men in suits in an oval frame" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>The Sorenson brothers, 1900. Martin, Andrew and Soren in front, Hans, Niels and Marion behind.</figcaption></figure>
-    <figure class="print"><button type="button" data-full="img/people-stroota.jpg" aria-label="Enlarge photo"><img src="img/people-stroota.jpg" alt="Two young men and three girls in an oval mount" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/people-stroota.jpg" aria-label="Enlarge photo"><img width="1045" height="810" src="img/people-stroota.jpg" alt="Two young men and three girls in an oval mount" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Arnold, Corine, Oscar, Roselind and Clara Stroota, 1902.</figcaption></figure>
   </div>
   <div class="spread">
-    <figure class="print"><button type="button" data-full="img/people-bauernfeind-wedding.jpg" aria-label="Enlarge photo"><img src="img/people-bauernfeind-wedding.jpg" alt="Double wedding party of eight in a studio" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/people-bauernfeind-wedding.jpg" aria-label="Enlarge photo"><img width="1100" height="849" src="img/people-bauernfeind-wedding.jpg" alt="Double wedding party of eight in a studio" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>A double wedding, May 14, 1907. Joseph Bauernfeind and Helen Eichinger, Johann and Theresa Eichinger.</figcaption></figure>
-    <figure class="print"><button type="button" data-full="img/people-fritsch-brothers.jpg" aria-label="Enlarge photo"><img src="img/people-fritsch-brothers.jpg" alt="Five men in suits and hats standing in snow" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/people-fritsch-brothers.jpg" aria-label="Enlarge photo"><img width="970" height="685" src="img/people-fritsch-brothers.jpg" alt="Five men in suits and hats standing in snow" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Charlie, George, Jack, Tony and Frank Fritsch, 1910.</figcaption></figure>
   </div>
   <div class="spread">
-    <figure class="print tall"><button type="button" data-full="img/people-ole-johnson.jpg" aria-label="Enlarge photo"><img src="img/people-ole-johnson.jpg" alt="Bearded older man in a carved chair with a woman wagging her finger at him" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print tall"><button type="button" data-full="img/people-ole-johnson.jpg" aria-label="Enlarge photo"><img width="733" height="1100" src="img/people-ole-johnson.jpg" alt="Bearded older man in a carved chair with a woman wagging her finger at him" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Ole Johnson gets a talking-to, about 1910.</figcaption></figure>
-    <figure class="print"><button type="button" data-full="img/people-vircks.jpg" aria-label="Enlarge photo"><img src="img/people-vircks.jpg" alt="Family in an open Model T on a dirt road" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/people-vircks.jpg" aria-label="Enlarge photo"><img width="1100" height="667" src="img/people-vircks.jpg" alt="Family in an open Model T on a dirt road" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Max, Helen, Clarence, Marvin and Lester Vircks, 1916. Max kept bees and sold Sunrise Apiary honey.</figcaption></figure>
   </div>
   <div class="spread">
-    <figure class="print tall"><button type="button" data-full="img/people-skerbeck.jpg" aria-label="Enlarge photo"><img src="img/people-skerbeck.jpg" alt="Small girl in a pale dress" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print tall"><button type="button" data-full="img/people-skerbeck.jpg" aria-label="Enlarge photo"><img width="662" height="1100" src="img/people-skerbeck.jpg" alt="Small girl in a pale dress" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Violet Skerbeck, age 5, 1918.</figcaption></figure>
-    <figure class="print"><button type="button" data-full="img/people-jantsch-sled.jpg" aria-label="Enlarge photo"><img src="img/people-jantsch-sled.jpg" alt="Enclosed mail sled with a stovepipe and two horses" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/people-jantsch-sled.jpg" aria-label="Enlarge photo"><img width="588" height="404" src="img/people-jantsch-sled.jpg" alt="Enclosed mail sled with a stovepipe and two horses" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Bill Jantsch's mail sled, 1922. Stove inside, stovepipe out the roof.</figcaption></figure>
   </div>
   <div class="spread">
-    <figure class="print tall"><button type="button" data-full="img/people-baldwin-mehner.jpg" aria-label="Enlarge photo"><img src="img/people-baldwin-mehner.jpg" alt="Grinning man with a pipe and glasses on his forehead" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print tall"><button type="button" data-full="img/people-baldwin-mehner.jpg" aria-label="Enlarge photo"><img width="799" height="1100" src="img/people-baldwin-mehner.jpg" alt="Grinning man with a pipe and glasses on his forehead" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Baldwin Mehner, Dorchester painter, about 1930.</figcaption></figure>
-    <figure class="print tall"><button type="button" data-full="img/people-mehner-painting.jpg" aria-label="Enlarge photo"><img src="img/people-mehner-painting.jpg" alt="Painted board of fishermen in a canoe at sunset" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print tall"><button type="button" data-full="img/people-mehner-painting.jpg" aria-label="Enlarge photo"><img width="825" height="1100" src="img/people-mehner-painting.jpg" alt="Painted board of fishermen in a canoe at sunset" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>One of Baldwin Mehner's paintings, dated 1900.</figcaption></figure>
   </div>
   <div class="spread">
-    <figure class="print tall"><button type="button" data-full="img/people-dr-foley.jpg" aria-label="Enlarge photo"><img src="img/people-dr-foley.jpg" alt="White-haired man in glasses and a pinstripe suit" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print tall"><button type="button" data-full="img/people-dr-foley.jpg" aria-label="Enlarge photo"><img width="603" height="813" src="img/people-dr-foley.jpg" alt="White-haired man in glasses and a pinstripe suit" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Dr. F. P. Foley, 1946.</figcaption></figure>
-    <figure class="print"><button type="button" data-full="img/people-foley-day.jpg" aria-label="Enlarge photo"><img src="img/people-foley-day.jpg" alt="Parade with a vintage fire truck and crowds" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/people-foley-day.jpg" aria-label="Enlarge photo"><img width="603" height="396" src="img/people-foley-day.jpg" alt="Parade with a vintage fire truck and crowds" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Dr. Foley Day, 1950. Romie Kronschnabl on the truck.</figcaption></figure>
   </div>
   <div class="spread">
-    <figure class="print"><button type="button" data-full="img/people-schnitzelbank.jpg" aria-label="Enlarge photo"><img src="img/people-schnitzelbank.jpg" alt="Five men in comic costume with top hats and fake mustaches" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/people-schnitzelbank.jpg" aria-label="Enlarge photo"><img width="908" height="711" src="img/people-schnitzelbank.jpg" alt="Five men in comic costume with top hats and fake mustaches" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Performing the Schnitzelbank, 1960. Ed Werner, Gene Skerbeck, Joe Doessl, Allan Kalman and Joe Weber.</figcaption></figure>
-    <figure class="print"><button type="button" data-full="img/people-skat.jpg" aria-label="Enlarge photo"><img src="img/people-skat.jpg" alt="Newspaper clipping of three men playing cards" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/people-skat.jpg" aria-label="Enlarge photo"><img width="1012" height="1100" src="img/people-skat.jpg" alt="Newspaper clipping of three men playing cards" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>"But did they win?" Bill Jantsch, George Meier and Fred Ludwig at skat, 1970s.</figcaption></figure>
   </div>
   <div class="spread">
-    <figure class="print"><button type="button" data-full="img/people-fire-chiefs.jpg" aria-label="Enlarge photo"><img src="img/people-fire-chiefs.jpg" alt="Three men holding plaques" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/people-fire-chiefs.jpg" aria-label="Enlarge photo"><img width="1100" height="749" src="img/people-fire-chiefs.jpg" alt="Three men holding plaques" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Three fire chiefs, 1977. Herman Sebold, Dick Smith and Joe Weber.</figcaption></figure>
-    <figure class="print"><button type="button" data-full="img/people-ww1-vets.jpg" aria-label="Enlarge photo"><img src="img/people-ww1-vets.jpg" alt="Newspaper clipping of four elderly veterans" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/people-ww1-vets.jpg" aria-label="Enlarge photo"><img width="1000" height="746" src="img/people-ww1-vets.jpg" alt="Newspaper clipping of four elderly veterans" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Dorchester's World War I veterans, 1990.</figcaption></figure>
-    <figure class="print"><button type="button" data-full="img/people-erlei-piano.jpg" aria-label="Enlarge photo"><img src="img/people-erlei-piano.jpg" alt="Elderly woman at an upright piano" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
+    <figure class="print"><button type="button" data-full="img/people-erlei-piano.jpg" aria-label="Enlarge photo"><img width="681" height="720" src="img/people-erlei-piano.jpg" alt="Elderly woman at an upright piano" loading="lazy"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Mrs. Alta Erlei at the piano, 1974.</figcaption></figure>
   </div>
 </section>
@@ -611,29 +642,153 @@ i{font-style:italic}
   </div>
 </footer>
 
+<section class="wall" id="wall" hidden aria-label="Photo wall">
+  <div class="wrap">
+    <div class="wall-head">
+      <div class="wall-top">
+        <h2>Every photo, by decade</h2>
+        <button type="button" class="wall-back" id="wall-back">&larr; Back to the story</button>
+      </div>
+      <div class="chips" id="dec-chips" role="group" aria-label="Decade"><span class="lbl">Decade</span></div>
+      <div class="chips" id="top-chips" role="group" aria-label="Subject"><span class="lbl">Subject</span></div>
+      <p class="wall-count" id="wall-count" aria-live="polite"></p>
+    </div>
+    <ul class="wall-grid" id="wall-grid"></ul>
+  </div>
+</section>
+
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Enlarged photo">
   <img id="lb-img" alt="">
   <p id="lb-cap"></p>
-  <button type="button" id="lb-close">Close</button>
+  <div class="lb-bar">
+    <button type="button" id="lb-prev" aria-label="Previous photo">&larr; Prev</button>
+    <span class="lb-count" id="lb-count"></span>
+    <button type="button" id="lb-next" aria-label="Next photo">Next &rarr;</button>
+  </div>
+  <div class="lb-bar">
+    <button type="button" id="lb-find" hidden>Find it in the story</button>
+    <button type="button" id="lb-close">Close</button>
+  </div>
 </div>
 
 <script>
 (function(){
-  var lb=document.getElementById('lb'),img=document.getElementById('lb-img'),cap=document.getElementById('lb-cap'),closeBtn=document.getElementById('lb-close'),last=null;
-  function open(btn){
-    last=btn;
-    img.src=btn.getAttribute('data-full');
-    var i=btn.querySelector('img'); img.alt=i?i.alt:'';
-    var fig=btn.closest('figure'), c=fig?fig.querySelector('figcaption'):null;
-    cap.textContent=c?c.textContent:'';
-    lb.hidden=false; closeBtn.focus();
-  }
-  function close(){ lb.hidden=true; img.removeAttribute('src'); if(last) last.focus(); }
-  document.addEventListener('click',function(e){
-    var b=e.target.closest('button[data-full]'); if(b){open(b);return;}
-    if(!lb.hidden && (e.target===lb||e.target===closeBtn)) close();
+  var $=function(id){return document.getElementById(id)};
+  var lb=$('lb'),img=$('lb-img'),cap=$('lb-cap'),closeBtn=$('lb-close'),prevBtn=$('lb-prev'),nextBtn=$('lb-next'),countEl=$('lb-count'),findBtn=$('lb-find');
+  var wall=$('wall'),grid=$('wall-grid'),decBox=$('dec-chips'),topBox=$('top-chips'),wallCount=$('wall-count');
+
+  /* Collect every photo in the story, in page order */
+  var YEAR={'miltimore':1876,'lydon-letter':1970,'rail-hardware':1886,'vandusen-stencil':1890,'seidel-coat':1940,'park-paintings':2010,'1898-new-era':1898,'1875-map':1875,'people-skat':1975};
+  var TOPICS={
+    'Railroad':['1882-depot','lydon-letter','rail-hardware','1910-depot','1917-snow-train','1917-clearing-track','1909-unloading-logs','people-kronschnabl-carriers','people-jantsch-sled'],
+    'Lumber & farming':['1890-vandusen-sawmill','1905-paulson-sawmill','1898-logs-kids','1909-unloading-logs','vandusen-stencil','1900-threshing','1941-quarry','1929-canning','1880-pioneer-home','1875-map','1961-steam-engine'],
+    'Front Street & business':['1888-mercantile','1904-front-street','1896-star-hotel','1895-big-store','1901-front-st','1912-front-street','1909-bank','1914-miller-hotel','1919-working-front-st','1920-blacksmith','1937-dorchester-days','seidel-coat','1942-clover-farm','1958-front-street','1951-aerial','1898-new-era'],
+    'Fires & storms':['1923-after-fire','1931-fire','1959-school-burns','1920-blacksmith','1917-snow-train','1917-clearing-track'],
+    'Schools & sports':['1916-high-school','1960-grade-school','1937-aces','1950-basketball'],
+    'Churches & village':['1912-st-peters','1940-st-louis-interior','1901-election','1965-old-village-hall','1966-new-village-hall','1975-water-tower','1971-lake','park-paintings','1955-white-pine','people-fire-chiefs'],
+    'Celebrations':['1889-harvest','1901-chicken-days','1937-dorchester-days','1957-halloween','1973-parade','people-foley-day','people-schnitzelbank','1961-steam-engine'],
+    'People':[]
+  };
+  var photos=[];
+  Array.prototype.forEach.call(document.querySelectorAll('main figure.print, header figure.print'),function(fig){
+    var b=fig.querySelector('button[data-full]'); if(!b) return;
+    var src=b.getAttribute('data-full'), slug=src.replace(/^img\//,'').replace(/\.jpg$/,'');
+    var c=fig.querySelector('figcaption'), text=c?c.textContent.trim():'';
+    var y=YEAR[slug], m;
+    if(!y && (m=slug.match(/^(1[89]\d\d|20\d\d)/))) y=+m[1];
+    if(!y && (m=text.match(/\b(1[89]\d\d|20[0-2]\d)\b/))) y=+m[1];
+    var tops=[];
+    for(var t in TOPICS){ if(TOPICS[t].indexOf(slug)>-1) tops.push(t); }
+    if(slug.indexOf('people-')===0||slug==='miltimore') tops.push('People');
+    var i=b.querySelector('img');
+    photos.push({src:src,slug:slug,cap:text,alt:i?i.alt:'',year:y||0,dec:y?Math.floor(y/10)*10:0,topics:tops,fig:fig,btn:b,w:i?i.getAttribute('width'):'',h:i?i.getAttribute('height'):''});
   });
-  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!lb.hidden) close(); });
+  var storyList=photos.slice();
+
+  /* Lightbox, with prev/next through whichever list it was opened from */
+  var list=storyList, idx=0, fromWall=false, lastFocus=null;
+  function show(){
+    var p=list[idx]; img.src=p.src; img.alt=p.alt; cap.textContent=p.cap;
+    countEl.textContent=(idx+1)+' of '+list.length;
+    prevBtn.disabled=idx===0; nextBtn.disabled=idx===list.length-1;
+  }
+  function openLb(l,i,fw){ list=l; idx=i; fromWall=fw; lastFocus=document.activeElement; findBtn.hidden=!fw; lb.classList.toggle('on-wall',fw); show(); lb.hidden=false; closeBtn.focus(); }
+  function closeLb(){ lb.hidden=true; img.removeAttribute('src'); if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
+  function step(d){ var n=idx+d; if(n>=0&&n<list.length){ idx=n; show(); } }
+  prevBtn.addEventListener('click',function(){step(-1)});
+  nextBtn.addEventListener('click',function(){step(1)});
+  closeBtn.addEventListener('click',closeLb);
+  lb.addEventListener('click',function(e){ if(e.target===lb) closeLb(); });
+  findBtn.addEventListener('click',function(){
+    var p=list[idx]; closeLb(); closeWall();
+    setTimeout(function(){ p.fig.scrollIntoView({block:'center'}); p.btn.focus({preventScroll:true}); },30);
+  });
+  var tx=null;
+  lb.addEventListener('touchstart',function(e){ tx=e.touches[0].clientX; },{passive:true});
+  lb.addEventListener('touchend',function(e){ if(tx===null) return; var dx=e.changedTouches[0].clientX-tx; if(Math.abs(dx)>50) step(dx<0?1:-1); tx=null; });
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('main button[data-full], header button[data-full]'); if(!b) return;
+    for(var k=0;k<storyList.length;k++){ if(storyList[k].btn===b){ openLb(storyList,k,false); return; } }
+  });
+
+  /* Photo wall */
+  var dec='all', top='all', shown=[];
+  function chip(box,label,val,count,cur,onPick){
+    var c=document.createElement('button'); c.type='button'; c.className='chip';
+    c.innerHTML=label+(count!=null?'<small>'+count+'</small>':'');
+    c.setAttribute('aria-pressed',String(val===cur));
+    c.addEventListener('click',function(){ onPick(val); });
+    box.appendChild(c);
+  }
+  function renderChips(){
+    [decBox,topBox].forEach(function(box){ while(box.children.length>1) box.removeChild(box.lastChild); });
+    var decs={}; photos.forEach(function(p){ if(top==='all'||p.topics.indexOf(top)>-1){ decs[p.dec]=(decs[p.dec]||0)+1; } });
+    var tc=0; for(var k in decs) tc+=decs[k];
+    chip(decBox,'All',  'all', tc, dec, function(v){dec=v;render();});
+    Object.keys(decs).map(Number).sort(function(a,b){return a-b}).forEach(function(d){
+      chip(decBox, d? d+'s':'Undated', d, decs[d], dec, function(v){dec=v;render();});
+    });
+    var tops={}; photos.forEach(function(p){ if(dec==='all'||p.dec===dec){ p.topics.forEach(function(t){ tops[t]=(tops[t]||0)+1; }); } });
+    chip(topBox,'Everything','all',null,top,function(v){top=v;render();});
+    Object.keys(TOPICS).forEach(function(t){ if(tops[t]) chip(topBox,t,t,tops[t],top,function(v){top=v;render();}); });
+  }
+  function render(){
+    shown=photos.filter(function(p){ return (dec==='all'||p.dec===dec)&&(top==='all'||p.topics.indexOf(top)>-1); })
+                .sort(function(a,b){ return a.year-b.year; });
+    if(!shown.length && (dec!=='all'||top!=='all')){ if(dec!=='all'){dec='all';} else {top='all';} return render(); }
+    renderChips();
+    grid.innerHTML='';
+    shown.forEach(function(p,i){
+      var li=document.createElement('li'), b=document.createElement('button');
+      b.type='button'; b.setAttribute('aria-label','Enlarge: '+p.cap);
+      b.innerHTML='<span class="ph"><img loading="lazy" alt="" src="'+p.src+'"'+(p.w?' width="'+p.w+'" height="'+p.h+'"':'')+'></span><span class="yr"></span>';
+      b.querySelector('img').alt=p.alt;
+      b.querySelector('.yr').textContent=p.cap.length>70?p.cap.slice(0,68).replace(/\s+\S*$/,'')+'…':p.cap;
+      b.addEventListener('click',function(){ openLb(shown,i,true); });
+      li.appendChild(b); grid.appendChild(li);
+    });
+    var label=(dec==='all'?'all decades':dec+'s')+(top==='all'?'':', '+top);
+    wallCount.textContent=shown.length+(shown.length===1?' photo':' photos')+' · '+label;
+  }
+  var savedY=0;
+  function openWall(){ if(!wall.hidden) return; savedY=window.scrollY; render(); wall.hidden=false; wall.scrollTop=0; document.documentElement.style.overflow='hidden'; $('wall-back').focus(); }
+  function closeWall(){
+    if(wall.hidden) return; wall.hidden=true; document.documentElement.style.overflow='';
+    if(location.hash==='#photos'){ try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){ location.hash=''; } }
+    window.scrollTo(0,savedY);
+  }
+  $('wall-back').addEventListener('click',closeWall);
+  function route(){ if(location.hash==='#photos') openWall(); else closeWall(); }
+  window.addEventListener('hashchange',route);
+  route();
+
+  document.addEventListener('keydown',function(e){
+    if(!lb.hidden){
+      if(e.key==='Escape') closeLb();
+      else if(e.key==='ArrowRight') step(1);
+      else if(e.key==='ArrowLeft') step(-1);
+    } else if(!wall.hidden && e.key==='Escape'){ closeWall(); }
+  });
 })();
 </script>
 
