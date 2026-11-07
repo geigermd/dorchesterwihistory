@@ -140,6 +140,19 @@ i{font-style:italic}
 .lb-count{font-family:var(--typed);font-size:13px;color:var(--dim);min-width:5em;text-align:center}
 .lb.on-wall{z-index:40}
 
+/* 1938 vs 2024 slider */
+.ba{margin:26px 0 30px;max-width:980px}
+.ba-frame{position:relative;aspect-ratio:1360/930;max-width:100%;background:var(--print);padding:10px;box-shadow:0 14px 22px -14px rgba(0,0,0,.85);overflow:hidden;touch-action:pan-y}
+.ba-frame img{position:absolute;inset:10px;width:calc(100% - 20px);height:calc(100% - 20px);object-fit:cover;max-width:none}
+.ba-then{clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
+.ba-handle{position:absolute;top:10px;bottom:10px;left:calc(10px + (100% - 20px) * var(--pos-n, .5));width:3px;margin-left:-1.5px;background:var(--gold);box-shadow:0 0 0 1px rgba(0,0,0,.4);pointer-events:none}
+.ba-handle::after{content:"";position:absolute;top:50%;left:50%;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;background:var(--gold);box-shadow:0 2px 6px rgba(0,0,0,.6)}
+.ba-tag{position:absolute;top:20px;font-family:var(--typed);font-size:14px;background:var(--slip);color:var(--slip-ink);padding:3px 8px;pointer-events:none}
+.ba-tag-l{left:20px}.ba-tag-r{right:20px}
+.ba-frame input[type=range]{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
+.ba-frame:has(input:focus-visible){outline:2px solid var(--gold);outline-offset:4px}
+.ba figcaption{font-family:var(--typed);font-size:14px;line-height:1.5;color:var(--slip-ink);background:var(--slip);display:inline-block;padding:6px 10px;margin:14px 0 0 12px;max-width:calc(100% - 24px);transform:rotate(-.4deg)}
+
 /* 1912 panorama */
 .pano{margin:30px 0 34px}
 .pano-scroll{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;background:var(--print);padding:10px;box-shadow:0 14px 22px -14px rgba(0,0,0,.85);scrollbar-color:#8a8273 var(--print)}
@@ -524,6 +537,24 @@ i{font-style:italic}
     <figure class="print small"><button type="button" data-full="img/1975-water-tower.jpg" aria-label="Enlarge photo"><img width="618" height="602" src="img/1975-water-tower.jpg" alt="Steel lattice water tower" decoding="async"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>The water tower, put up in 1938.</figcaption></figure>
   </div>
+  <div class="text" style="margin-top:44px">
+    <h3 class="sub-h">From the air, August 13, 1938</h3>
+    <p>In the late 1930s the federal government photographed every farm in Wisconsin from the air. Dorchester's frame was shot on August 13, 1938. The village sits in the lower right corner, where County A crosses the railroad. Front Street runs along the tracks, the houses fill a few blocks south of County A, and a cluster of larger buildings, likely the mills and warehouses, stands just east of the tracks. The photo stops at the frame edge, so the south end of town is cut off. Everything around it is farm fields and woodlots, the land that was stump country fifty years before. The park and lake were still thirty years away. Slide the line below to see the same ground from a 2024 aerial photograph.</p>
+  </div>
+  <figure class="ba" id="ba">
+    <div class="ba-frame" style="--pos:50%">
+      <img src="img/slider-2024.jpg" width="1360" height="930" alt="Dorchester from the air in 2024: paved streets, a mobile home park and industrial buildings on the west side, large warehouses east of the tracks, and the park pond" class="ba-now">
+      <img src="img/slider-1938.jpg" width="1360" height="930" alt="Dorchester from the air on August 13, 1938: a few blocks of houses west of the railroad, surrounded by farm fields" class="ba-then">
+      <span class="ba-tag ba-tag-l" aria-hidden="true">1938</span><span class="ba-tag ba-tag-r" aria-hidden="true">2024</span>
+      <span class="ba-handle" aria-hidden="true"></span>
+      <input type="range" min="0" max="100" value="50" id="ba-range" aria-label="Slide between 1938 and 2024">
+    </div>
+    <figcaption>Drag the line to compare. Left: August 13, 1938. Right: September 27, 2024. The railroad runs up the right side, and County A crosses the middle. The two photos are lined up by hand, so some streets may sit a little off.</figcaption>
+  </figure>
+  <div class="spread wide">
+    <figure class="print"><button type="button" data-full="img/aerial-1938.jpg" aria-label="Enlarge photo"><img width="2200" height="1797" src="img/aerial-1938.jpg" alt="Full 1938 aerial frame of farms in the Town of Mayville, with the village of Dorchester in the lower right corner" decoding="async"><span class="c3"></span><span class="c4"></span></button>
+      <figcaption>The full frame, BHO-2-67: the farms north and west of town, with Dorchester in the lower right. USDA aerial survey, 1938, via the Wisconsin State Cartographer's Office.</figcaption></figure>
+  </div>
 </section>
 
 <section class="chapter" id="red-devils">
@@ -715,6 +746,8 @@ i{font-style:italic}
     <h3>Where this comes from</h3>
     <p>Artifacts and labels at the Dorchester Historical Center, family photographs, clippings from the <i>Dorchester Clarion</i>, <i>The New Era</i>, the <i>Times Review</i> and the <i>Marshfield News-Herald</i>, a 1970 letter from James W. Lydon of the Soo Line, and Joan M. Jensen's article on the Skerbeck circus in <i>Voyageur</i> (2008).</p>
     <p>Other facts on this page come from items transcribed on the <a href="https://www.wiclarkcountyhistory.org" target="_blank" rel="noopener">Clark County History site</a>, including the <i>Weekly Clarion</i> of May 4, 1923, the 1918 county history and church histories; the <a href="https://dorchesterwi.gov/dorchester-american-legion-history/" target="_blank" rel="noopener">Dorchester American Legion history</a>; the <a href="https://www.dpaa.mil/News-Stories/ID-Announcements/Article/602081/three-missing-wwii-sailors-are-identified-thompson-wyman-boxrucker/" target="_blank" rel="noopener">Defense POW/MIA Accounting Agency</a>; and the <a href="https://www.skerbeckcarnival.com/p/about/history" target="_blank" rel="noopener">Skerbeck carnival's history</a>.</p>
+    <p>The 2024 aerial photograph is from the USDA National Agriculture Imagery Program, public domain, via <a href="https://earthexplorer.usgs.gov" target="_blank" rel="noopener">USGS EarthExplorer</a>.</p>
+    <p>The 1938 aerial photograph is from the USDA's 1937–41 survey of Wisconsin, public domain, from the <a href="https://www.sco.wisc.edu/pubs/wisconsin-historic-aerial-imagery-finder" target="_blank" rel="noopener">Wisconsin Historic Aerial Imagery Finder</a>.</p>
     <p>The 1893 and 1910s township maps are from the Wisconsin Historical Society's <a href="https://www.wisconsinhistory.org/record/multi/W01B9KC/clark-county-plats" target="_blank" rel="noopener">Clark County Plats</a> and <a href="https://www.wisconsinhistory.org/record/multi/W0174GJ/clark-county-wisconsin-plat-book" target="_blank" rel="noopener">Clark County Plat Book</a>, both with no known copyright.</p>
     <p>The 1895 figures come from the Wisconsin state census pages for the Town of Mayville. The cemetery history draws on "God's Acres" by Beaulah Jensen Fischer, and Dorchester Memorial Cemetery's burial index, on the <a href="https://www.wiclarkcountyhistory.org/cemeteries/mayville/memorial" target="_blank" rel="noopener">Clark County History site</a>.</p>
     <p>Public sources: the <a href="https://www.wiclarkcountyhistory.org/clark/history/1915ClarkCoHistory/1_Dorchester.htm" target="_blank" rel="noopener">Clark County history</a> and <a href="https://www.wiclarkcountyhistory.org/4data/86/86904.htm" target="_blank" rel="noopener">1876 Stevens Point Journal item</a> on the Clark County History site, the <a href="https://dorchesterwi.gov/about-dorchester/" target="_blank" rel="noopener">Village of Dorchester</a>, U.S. Census counts as listed on <a href="https://en.wikipedia.org/wiki/Dorchester,_Wisconsin" target="_blank" rel="noopener">Wikipedia</a>, and <a href="https://travelwisconsin.com/events/fairs-festivals/dorchester-days-39921" target="_blank" rel="noopener">Travel Wisconsin</a>.</p>
@@ -826,6 +859,14 @@ i{font-style:italic}
     var b=e.target.closest('main button[data-full], header button[data-full]'); if(!b) return;
     for(var k=0;k<storyList.length;k++){ if(storyList[k].btn===b){ openLb(storyList,k,false); return; } }
   });
+
+  /* 1938 vs 2024 slider */
+  (function(){
+    var r=document.getElementById('ba-range'); if(!r) return;
+    var f=r.parentNode;
+    function set(){ var v=r.value; f.style.setProperty('--pos', v+'%'); f.style.setProperty('--pos-n', v/100); }
+    r.addEventListener('input',set); set();
+  })();
 
   /* Center Avenue then and now */
   (function(){
