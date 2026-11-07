@@ -75,6 +75,10 @@ i{font-style:italic}
 .census li{display:grid;grid-template-columns:3em minmax(0,1fr) 2.6em;gap:10px;align-items:center;font-variant-numeric:tabular-nums}
 .census i{display:block;height:11px;width:calc(var(--n) / 876 * 100%);background:var(--slip-ink);opacity:.8}
 .census li span:last-child{text-align:right}
+.census95 li{grid-template-columns:9em minmax(0,1fr) 2.6em}
+.census95 i{width:calc(var(--n) / 879 * 100%)}
+@media (max-width:520px){.census95 li{grid-template-columns:7.6em minmax(0,1fr) 2.4em;font-size:12.5px}}
+
 @media (max-width:520px){.directory dl{grid-template-columns:minmax(0,1fr)}.directory dd{margin-bottom:4px}}
 
 /* Contents, like the front of a local history book */
@@ -288,12 +292,33 @@ i{font-style:italic}
     <p><b>c. 1883</b> Dr. H. M. Nedry, "one of the first doctors of Dorchester country," begins a practice he keeps until 1910.</p>
     <p><b>1886</b> H. LaBossier opens a general store. The Star Hotel goes up on South Front Street.</p>
     <p><b>1888</b> A. F. F. Jensen builds a two-story, 26-by-60-foot general store.</p>
+    <p>The 1895 Wisconsin state census went house by house through the Town of Mayville, which still included Dorchester since the village wasn't incorporated until 1901. The town clerk, Paul Blanc, counted 275 households and 1,398 people. The census recorded only where each person was born, so children born here to German, Danish or Norwegian parents are counted under the United States. Familiar names fill the pages: LeClaire, Paulson, Sorenson, Jensen, Mehner, Genrich, Gutwasser, Miltimore, Distelhorst and Kronschnabl. The same census lists 18 Civil War veterans living in Mayville, most getting their mail at Dorchester.</p>
   </div>
+  <aside class="slip census census95" aria-label="Where Mayville's people were born, 1895 census">
+    <h3>Town of Mayville, June 20, 1895: where people were born</h3>
+    <ul>
+      <li><span>United States</span><i style="--n:879"></i><span>879</span></li>
+      <li><span>Germany</span><i style="--n:371"></i><span>371</span></li>
+      <li><span>Scandinavia</span><i style="--n:100"></i><span>100</span></li>
+      <li><span>Other countries</span><i style="--n:43"></i><span>43</span></li>
+    </ul>
+    <small>1,398 people in 275 households. Wisconsin state census, read from the original handwritten pages; a few faint entries are approximate.</small>
+  </aside>
   <div class="spread">
     <figure class="print"><button type="button" data-full="img/1875-map.jpg" aria-label="Enlarge photo"><img width="1100" height="1035" src="img/1875-map.jpg" alt="Map of Town of Mayville homestead claims, 1875" decoding="async"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Town of Mayville and surrounding area, 1875. Drawn by Linda (Johnson) Mertens.</figcaption></figure>
     <figure class="print tall"><button type="button" data-full="img/miltimore.jpg" aria-label="Enlarge photo"><img width="952" height="1100" src="img/miltimore.jpg" alt="Framed portrait of Daniel O. Miltimore" decoding="async"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>Daniel O. Miltimore, 1838–1901.</figcaption></figure>
+  </div>
+  <div class="text" style="margin-top:36px">
+    <h3 class="sub-h">Who owned the land, 1893</h3>
+    <p>An 1893 county atlas mapped every farm in the Town of Mayville and printed the owner's name on it. Dorchester is the shaded block on the railroad in Section 13, with the Paulsons, LeClairs, Sorensons, Miltimores, Jensens and Malchows all around it. The Wisconsin Central runs down the right side to Abbotsford, and a second line crosses the bottom toward Curtiss. Tap the map to see it larger.</p>
+  </div>
+  <div class="spread">
+    <figure class="print"><button type="button" data-full="img/plat-1893-mayville.jpg" aria-label="Enlarge photo"><img width="1200" height="1126" src="img/plat-1893-mayville.jpg" alt="1893 plat map of the Town of Mayville with landowners' names on each parcel and Dorchester shaded in Section 13" decoding="async"><span class="c3"></span><span class="c4"></span></button>
+      <figcaption>Town of Mayville landowners, 1893. C. S. Stockwell's Clark County Plats, Wisconsin Historical Society.</figcaption></figure>
+    <figure class="print"><button type="button" data-full="img/plat-1910s-mayville.jpg" aria-label="Enlarge photo"><img width="1104" height="1200" src="img/plat-1910s-mayville.jpg" alt="Township 29 North, Range 1 East outline map from about 1910 showing the village of Dorchester, the Popple River and the railroad" decoding="async"><span class="c3"></span><span class="c4"></span></button>
+      <figcaption>The same township about 1910, with the village limits of Dorchester, Abbotsford and Curtiss and the Popple River. Briggs &amp; Falconer plat book, Wisconsin Historical Society.</figcaption></figure>
   </div>
   <div class="spread">
     <figure class="print"><button type="button" data-full="img/1880-pioneer-home.jpg" aria-label="Enlarge photo"><img width="1100" height="710" src="img/1880-pioneer-home.jpg" alt="Log cabin in a cutover clearing full of stumps" decoding="async"><span class="c3"></span><span class="c4"></span></button>
@@ -353,7 +378,7 @@ i{font-style:italic}
   <h2>Front Street</h2>
   <div class="text">
     <p>Front Street ran along the tracks, unpaved, lined with saloons, stores and hotels. There were Kronschnabl's and Fred Marten's saloons, the "Jerk Water Saloon and Dance Hall," the Star Hotel, the Dorchester House, August Miller's hotel, Fred Distelhorst's brick store, Esser's Hall and an Opera House. The Dorchester State Bank opened in 1909 and the Co-op store by 1912. In 1919 a crew hauled in wagonloads of stone to level the street.</p>
-    <p>The congregations built Salem Church, the "Little White Church" and St. Peter's Lutheran. The high school held its 1913 commencement in the Opera House for a class of seven, and a three-story brick high school stood by 1916.</p>
+    <p>The congregations built Salem Church, the "Little White Church" and St. Peter's Lutheran. The high school held its 1913 commencement in the Opera House for a class of seven, and a three-story brick high school stood by 1916. The town's three cemeteries were started by its churches. The pioneers called them "Gottes Acker," God's Acres. The Norwegian Lutherans bought land for theirs in October 1888 for $30. The German Evangelical congregation began Peace Cemetery, today North Dorchester Memorial. The largest, South Memorial, was begun jointly by the Catholic, Baptist and Lutheran churches, became Union Cemetery and then Dorchester Memorial Park in 1927. A fire in the 1920s destroyed the early cemetery records, so the first surviving entries date from January 1927.</p>
     <p>In 1912 a photographer climbed to the top of the mill and took the whole village in three frames, sold as a "Birdseye View of Dorchester." Put back together, they show the town from the railroad yard on the left, down Front Street, to the farm fields on the right.</p>
   </div>
   <figure class="pano" aria-label="Panorama of Dorchester in 1912">
@@ -689,6 +714,8 @@ i{font-style:italic}
   <div>
     <h3>Where this comes from</h3>
     <p>Artifacts and labels at the Dorchester Historical Center, family photographs, clippings from the <i>Dorchester Clarion</i>, <i>The New Era</i>, the <i>Times Review</i> and the <i>Marshfield News-Herald</i>, a 1970 letter from James W. Lydon of the Soo Line, and Joan M. Jensen's article on the Skerbeck circus in <i>Voyageur</i> (2008).</p>
+    <p>The 1893 and 1910s township maps are from the Wisconsin Historical Society's <a href="https://www.wisconsinhistory.org/record/multi/W01B9KC/clark-county-plats" target="_blank" rel="noopener">Clark County Plats</a> and <a href="https://www.wisconsinhistory.org/record/multi/W0174GJ/clark-county-wisconsin-plat-book" target="_blank" rel="noopener">Clark County Plat Book</a>, both with no known copyright.</p>
+    <p>The 1895 figures come from the Wisconsin state census pages for the Town of Mayville. The cemetery history draws on "God's Acres" by Beaulah Jensen Fischer, and Dorchester Memorial Cemetery's burial index, on the <a href="https://www.wiclarkcountyhistory.org/cemeteries/mayville/memorial" target="_blank" rel="noopener">Clark County History site</a>.</p>
     <p>Public sources: the <a href="https://www.wiclarkcountyhistory.org/clark/history/1915ClarkCoHistory/1_Dorchester.htm" target="_blank" rel="noopener">Clark County history</a> and <a href="https://www.wiclarkcountyhistory.org/4data/86/86904.htm" target="_blank" rel="noopener">1876 Stevens Point Journal item</a> on the Clark County History site, the <a href="https://dorchesterwi.gov/about-dorchester/" target="_blank" rel="noopener">Village of Dorchester</a>, U.S. Census counts as listed on <a href="https://en.wikipedia.org/wiki/Dorchester,_Wisconsin" target="_blank" rel="noopener">Wikipedia</a>, and <a href="https://travelwisconsin.com/events/fairs-festivals/dorchester-days-39921" target="_blank" rel="noopener">Travel Wisconsin</a>.</p>
     <p>The historical center's own artifact pages are at <a href="https://dorchesterwi.gov/artifacts-one-twenty-five/" target="_blank" rel="noopener">dorchesterwi.gov</a>.</p>
   </div>
