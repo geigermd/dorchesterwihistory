@@ -136,6 +136,26 @@ i{font-style:italic}
 .lb-count{font-family:var(--typed);font-size:13px;color:var(--dim);min-width:5em;text-align:center}
 .lb.on-wall{z-index:40}
 
+/* 1912 panorama */
+.pano{margin:30px 0 34px}
+.pano-scroll{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;background:var(--print);padding:10px;box-shadow:0 14px 22px -14px rgba(0,0,0,.85);scrollbar-color:#8a8273 var(--print)}
+.pano-scroll:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.pano-scroll img{display:block;height:clamp(240px,42vw,460px);width:auto;max-width:none;filter:sepia(.08)}
+.pano figcaption{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:space-between;align-items:baseline;font-family:var(--typed);font-size:14px;color:var(--slip-ink);background:var(--slip);padding:7px 11px;margin:14px 0 0 12px;max-width:calc(100% - 24px);transform:rotate(-.4deg);box-shadow:0 6px 10px -8px rgba(0,0,0,.8)}
+.pano-hint{color:#6b6352}
+/* Center Avenue then and now */
+.sub-h{font-size:clamp(24px,3.4vw,32px);margin-bottom:10px}
+.tn{margin:22px 0 10px;max-width:880px}
+.tn-frame{position:relative;aspect-ratio:3/2;background:var(--print);padding:10px;box-shadow:0 14px 22px -14px rgba(0,0,0,.85);max-width:100%}
+.tn-frame img{position:absolute;inset:10px;width:calc(100% - 20px);height:calc(100% - 20px);object-fit:cover;opacity:0;transition:opacity .5s ease}
+.tn-frame img.on{opacity:1}
+.tn-years{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.tn-years button{font-family:var(--typed);font-size:15px;background:var(--page-2);color:var(--ink);border:1px solid #3f3b34;padding:6px 14px;cursor:pointer;font-variant-numeric:tabular-nums}
+.tn-years button:hover{border-color:var(--gold)}
+.tn-years button[aria-pressed="true"]{background:var(--gold);color:#1d1c1a;border-color:var(--gold)}
+.tn figcaption{font-family:var(--typed);font-size:14px;line-height:1.5;color:var(--slip-ink);background:var(--slip);display:inline-block;padding:6px 10px;margin-top:14px;max-width:100%;transform:rotate(-.4deg)}
+@media (prefers-reduced-motion:reduce){.tn-frame img{transition:none}}
+
 /* Photo wall */
 .contents a.wall-open{display:inline-block;margin-top:22px;font-family:var(--typed);font-size:15px;background:var(--slip);color:var(--slip-ink);text-decoration:none;padding:8px 14px;transform:rotate(-.6deg);box-shadow:0 8px 14px -10px rgba(0,0,0,.8)}
 .contents a.wall-open:hover{background:var(--gold);color:#1d1c1a}
@@ -334,6 +354,15 @@ i{font-style:italic}
   <div class="text">
     <p>Front Street ran along the tracks, unpaved, lined with saloons, stores and hotels. There were Kronschnabl's and Fred Marten's saloons, the "Jerk Water Saloon and Dance Hall," the Star Hotel, the Dorchester House, August Miller's hotel, Fred Distelhorst's brick store, Esser's Hall and an Opera House. The Dorchester State Bank opened in 1909 and the Co-op store by 1912. In 1919 a crew hauled in wagonloads of stone to level the street.</p>
     <p>The congregations built Salem Church, the "Little White Church" and St. Peter's Lutheran. The high school held its 1913 commencement in the Opera House for a class of seven, and a three-story brick high school stood by 1916.</p>
+    <p>In 1912 a photographer climbed to the top of the mill and took the whole village in three frames, sold as a "Birdseye View of Dorchester." Put back together, they show the town from the railroad yard on the left, down Front Street, to the farm fields on the right.</p>
+  </div>
+  <figure class="pano" aria-label="Panorama of Dorchester in 1912">
+    <div class="pano-scroll" tabindex="0" aria-label="Panorama, scroll sideways to see the whole view">
+      <img src="img/pano-1912.jpg" width="3000" height="600" alt="Bird's-eye panorama of Dorchester in 1912 from the top of the mill: railroad tracks and fields on the left, Front Street and three church steeples in the middle, new houses and a storefront on the right">
+    </div>
+    <figcaption><span>Birdseye view of Dorchester from the top of the mill, 1912. Three photographs by Arnsen Photo, stitched back together.</span><span class="pano-hint" aria-hidden="true">Swipe or scroll sideways &rarr;</span></figcaption>
+  </figure>
+  <div class="text">
     <p>A Clark County history from around 1915 says the village "at one time was an important mill town" and now prospered "as the center of a rich farming community." Its business directory reads like a walk down Front Street:</p>
   </div>
   <aside class="slip directory" aria-label="Business directory, about 1915">
@@ -397,6 +426,23 @@ i{font-style:italic}
     <figure class="print"><button type="button" data-full="img/1919-working-front-st.jpg" aria-label="Enlarge photo"><img width="1076" height="663" src="img/1919-working-front-st.jpg" alt="Men spreading stone from a horse wagon on Front Street" decoding="async"><span class="c3"></span><span class="c4"></span></button>
       <figcaption>"Filling Front St. with stones," 1919, in front of John L. Sturner's store.</figcaption></figure>
   </div>
+  <div class="text" style="margin-top:44px">
+    <h3 class="sub-h">Center Avenue, then and now</h3>
+    <p>Photographers kept coming back to the same corner of Front Street and Center Avenue, also called County A, and pointing their cameras west. Pick a year to watch the street change.</p>
+  </div>
+  <figure class="tn" id="tn">
+    <div class="tn-frame">
+      <img src="img/tn-1908.jpg" width="1000" height="667" alt="Center Avenue looking west in 1908: unpaved road, frame stores and power poles" class="on" data-cap="1908. A dirt road then called North Street, frame stores on both sides and the first power poles.">
+      <img src="img/tn-1913.jpg" width="1000" height="667" alt="Center Avenue looking west in 1913 with the Dorchester House on the left" data-cap="1913. The Dorchester House on the left, Fleckenstein Hardware next to it, and the Genrich blacksmith shop on the right.">
+      <img src="img/tn-1920s.jpg" width="1000" height="667" alt="Center Avenue in the 1920s with Model T cars and a block building" data-cap="1920s. Model T's at the curb and a new block building. The photo is labeled 1946, but the cars say otherwise.">
+      <img src="img/tn-1949.jpg" width="1000" height="667" alt="Center Avenue looking west in 1949 with a streetlight, 1940s cars and a tavern" data-cap="1949. A streetlight over the corner, 1940s cars and a tavern on the right.">
+      <img src="img/tn-2010.jpg" width="1000" height="667" alt="Center Avenue looking west in 2010: paved road, lawns and trees" data-cap="2010. Paved and painted, with lawns and big trees where the storefronts used to be.">
+    </div>
+    <div class="tn-years" role="group" aria-label="Choose a year">
+      <button type="button" aria-pressed="true">1908</button><button type="button" aria-pressed="false">1913</button><button type="button" aria-pressed="false">1920s</button><button type="button" aria-pressed="false">1949</button><button type="button" aria-pressed="false">2010</button>
+    </div>
+    <figcaption id="tn-cap">1908. A dirt road then called North Street, frame stores on both sides and the first power poles.</figcaption>
+  </figure>
 </section>
 
 <section class="chapter" id="snow-fire">
@@ -752,6 +798,20 @@ i{font-style:italic}
     var b=e.target.closest('main button[data-full], header button[data-full]'); if(!b) return;
     for(var k=0;k<storyList.length;k++){ if(storyList[k].btn===b){ openLb(storyList,k,false); return; } }
   });
+
+  /* Center Avenue then and now */
+  (function(){
+    var box=document.getElementById('tn'); if(!box) return;
+    var imgs=box.querySelectorAll('.tn-frame img'), btns=box.querySelectorAll('.tn-years button'), cap=document.getElementById('tn-cap');
+    function pick(k){
+      for(var i=0;i<imgs.length;i++){ imgs[i].classList.toggle('on',i===k); btns[i].setAttribute('aria-pressed',String(i===k)); }
+      cap.textContent=imgs[k].getAttribute('data-cap');
+    }
+    Array.prototype.forEach.call(btns,function(b,i){
+      b.addEventListener('click',function(){pick(i)});
+      b.addEventListener('keydown',function(e){ var n=e.key==='ArrowRight'?i+1:e.key==='ArrowLeft'?i-1:-1; if(n>=0&&n<btns.length){ e.preventDefault(); pick(n); btns[n].focus(); } });
+    });
+  })();
 
   /* Photo wall */
   var dec='all', top='all', shown=[];
