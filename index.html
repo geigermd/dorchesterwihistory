@@ -933,6 +933,17 @@ i{font-style:italic}
   window.addEventListener('hashchange',route);
   route();
 
+  /* Re-jump to a #section link once fonts and photos have loaded, since the page grows as they arrive */
+  function rejump(){
+    var h=location.hash; if(!h||h==='#photos') return;
+    var el=document.getElementById(h.slice(1)); if(el) el.scrollIntoView();
+  }
+  if(location.hash && location.hash!=='#photos'){
+    if(document.fonts&&document.fonts.ready) document.fonts.ready.then(rejump);
+    window.addEventListener('load',rejump);
+    setTimeout(rejump,1500);
+  }
+
   document.addEventListener('keydown',function(e){
     if(!lb.hidden){
       if(e.key==='Escape') closeLb();
